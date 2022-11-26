@@ -8,7 +8,7 @@ const String chatscreen = '/ChatScreen';
 const String chatavailbilityscreen = '/ChatAvailbilityScreen';
 const String reporttoadmin = '/ReportToAdmin';
 const String adminreports = '/AdminReports';
-const String reporttogatekeeperscreen = '/ReportToGateKeeperScreen';
+
 const String addreporttogatekeeperscreen = '/AddReportToGateKeeperScreen';
 const String reportshistoryscreen= '/ReportsHistoryScreen';
 const String guestshistoryscreen= '/GuestsHistoryScreen';
@@ -28,6 +28,8 @@ const String vieweventimages = '/ViewEventImages';
 
 const String viewimage = '/ViewImage';
 const String noticeboardscreen = '/NoticeBoardScreen';
+
+const String gatekeeperreports = '/GatekeeperReports';
 
 
 

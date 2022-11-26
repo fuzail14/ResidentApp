@@ -1,10 +1,9 @@
 import 'dart:io';
 
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-final Color primaryColor = HexColor("#00BFA6");
+final Color primaryColor = HexColor("##FF9900");
 const String assetsBaseUrl = "assets/";
 const String logo = '${assetsBaseUrl}mia.png';
 
@@ -33,7 +32,6 @@ const String logo = '${assetsBaseUrl}mia.png';
 //     // View Users canceled the picker
 //   }
 // }
-
 
 Future<String> getDate(BuildContext context) async {
   DateTime date = new DateTime(2022, 12, 24);

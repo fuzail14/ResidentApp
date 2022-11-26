@@ -183,7 +183,7 @@ class _ReportToGateKeeperState
                                   if (controller.formKey.currentState!
                                       .validate()) {
                                     controller.formKey.currentState!.save();
-                                    Get.offAndToNamed(reporttogatekeeperscreen);
+                                    Get.offAndToNamed(gatekeeperreports);
                                   } else {
                                     return null;
                                   }

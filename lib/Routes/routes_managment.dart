@@ -12,7 +12,7 @@ import 'package:userapp/Module/NoticeBoard/View/notice_board_screen.dart';
 import 'package:userapp/Module/Notifications/View/notifications_screen.dart';
 import 'package:userapp/Module/PanicMode/View/panic_mode_screen.dart';
 
-import 'package:userapp/Module/ReportToGateKeeper/View/report_to_gatekeeper_screen.dart';
+
 import 'package:userapp/Module/ReportsHistory/View/admin_reports_history_screen.dart';
 import 'package:userapp/Module/ServiceProviderAttendanceHistory/View/service_providers_attendance.dart';
 import 'package:userapp/Module/ServiceProviderAttendanceHistory/View/view_attendance_detail.dart';
@@ -23,6 +23,7 @@ import 'package:userapp/Widgets/image_show.dart';
 
 import '../Module/HomeScreen/View/home_screen.dart';
 import '../Module/Login/View/login_screen.dart';
+import '../Module/Pre Approve Entry/View/pre_approve_entry_screen.dart';
 import '../Module/Report to Sub Admin/View/Admin Reports/admin_reports.dart';
 import '../Module/Report to Sub Admin/View/Report to Admin/report_to_admin.dart';
 
@@ -86,13 +87,7 @@ class RouteManagement {
         // transition: Transition.circularReveal,
         //      transitionDuration: Duration(seconds: 1)
       ),
-      GetPage(
-        name: reporttogatekeeperscreen,
-        page: () => GatekeeperReports(),
-        binding: ScreenBindings(),
-        // transition: Transition.circularReveal,
-        //      transitionDuration: Duration(seconds: 1)
-      ),
+     
       GetPage(
         name: addreporttogatekeeperscreen,
         page: () => ReportToGateKeeper(),
@@ -179,6 +174,14 @@ class RouteManagement {
         // transition: Transition.circularReveal,
         //      transitionDuration: Duration(seconds: 1)
       ),
+      GetPage(
+        name: gatekeeperreports,
+        page: () => GatekeeperReports(),
+        binding: ScreenBindings(),
+        // transition: Transition.circularReveal,
+        //      transitionDuration: Duration(seconds: 1)
+      ),
+      
       
     ];
   }
