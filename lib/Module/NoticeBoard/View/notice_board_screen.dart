@@ -414,6 +414,7 @@ class NoticeBoardScreen extends GetView {
                 ],
               ),
             ),
+          
           ],
         )),
       ),

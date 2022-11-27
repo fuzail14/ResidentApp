@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import '../../../Constants/constants.dart';
 import '../Controller/event_screen_controller.dart';
@@ -11,169 +14,461 @@ class EventsScreen extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    
     return GetBuilder<EventScreenController>(
         init: EventScreenController(),
         builder: (controller) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Events'),
-              backgroundColor: primaryColor,
-            ),
-            body: FutureBuilder<Event>(
-                future: controller.viewEventsApi(
-                    userid: controller.userdata.subadminid!,
-                    token: controller.userdata.bearerToken!),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                        itemBuilder: (context, index) {
+          return SafeArea(
+            child: Scaffold(
+              body: Stack(
+                children: [
+                  FutureBuilder<Event>(
+                      future: controller.viewEventsApi(
+                          userid: controller.userdata.subadminid!,
+                          token: controller.userdata.bearerToken!),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
                           return Padding(
-                            padding: EdgeInsets.all(8),
-                            child: GestureDetector(
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (ctx) => AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(32.0))),
-                                    contentPadding: EdgeInsets.only(top: 10.0),
-                                    title: Text("Event Full Detail"),
-                                    content: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.5,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(20.0),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Text(
-                                                'Event Title: ${snapshot.data!.data![index].title}',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Text(
-                                                ' Event Description: ${snapshot.data!.data![index].description}',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              SizedBox(
-                                                height: 20,
-                                              ),
-                                              Text(
-                                                'Start Date: ${snapshot.data!.data![index].startdate}',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Text(
-                                                'End Date: ${snapshot.data!.data![index].enddate}',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              SizedBox(
-                                                height: 20,
-                                              ),
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Get.back();
-                                                },
-                                                child: new Container(
-                                                  padding:
-                                                      new EdgeInsets.all(16.0),
-                                                  decoration: new BoxDecoration(
-                                                      color: const Color(
-                                                          0xFF33b17c),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20)),
-                                                  child: new Text(
-                                                    ' Okay',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 18.0,
-                                                      fontFamily:
-                                                          'helvetica_neue_light',
-                                                    ),
-                                                    textAlign: TextAlign.center,
+                            padding: EdgeInsets.only(left: 16, top: 128),
+                            child: ListView.builder(
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                    height: 140,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        showDialog(
+                                            context: context,
+                                            builder:
+                                                (BuildContext context) =>
+                                                    AlertDialog(
+                                                      title: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Center(
+                                                              child: Text(
+                                                            snapshot
+                                                                .data!
+                                                                .data![index]
+                                                                .title!,
+                                                            style: GoogleFonts.ubuntu(
+                                                                color: HexColor(
+                                                                    '#4D4D4D'),
+                                                                fontSize: 18,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700),
+                                                          )),
+                                                          SizedBox(
+                                                            height: 37,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              CircleAvatar(
+                                                                  maxRadius: 10,
+                                                                  backgroundColor:
+                                                                      Color.fromRGBO(
+                                                                          255,
+                                                                          153,
+                                                                          0,
+                                                                          0.35),
+                                                                  child: SvgPicture
+                                                                      .asset(
+                                                                          'assets/chaticon.svg')),
+                                                              SizedBox(
+                                                                width: 8,
+                                                              ),
+                                                              Text(
+                                                                'Description',
+                                                                style: GoogleFonts.ubuntu(
+                                                                    color: HexColor(
+                                                                        '#4D4D4D'),
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 30),
+                                                            child: Text(
+                                                              snapshot
+                                                                  .data!
+                                                                  .data![index]
+                                                                  .description!,
+                                                              style: GoogleFonts.ubuntu(
+                                                                  color: HexColor(
+                                                                      '#4D4D4D'),
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 30,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              CircleAvatar(
+                                                                  maxRadius: 10,
+                                                                  backgroundColor:
+                                                                      Color.fromRGBO(
+                                                                          255,
+                                                                          153,
+                                                                          0,
+                                                                          0.35),
+                                                                  child: SvgPicture
+                                                                      .asset(
+                                                                          'assets/chaticon.svg')),
+                                                              SizedBox(
+                                                                width: 8,
+                                                              ),
+                                                              Text(
+                                                                'Date',
+                                                                style: GoogleFonts.ubuntu(
+                                                                    color: HexColor(
+                                                                        '#4D4D4D'),
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 27,
+                                                                    top: 20),
+                                                            child: Container(
+                                                                height: 27,
+                                                                width: 90,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  border: Border.all(
+                                                                      color: HexColor(
+                                                                          '#E8E8E8')),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                    4,
+                                                                  ),
+                                                                  color:
+                                                                      primaryColor,
+                                                                ),
+                                                                child: Padding(
+                                                                  padding: EdgeInsets
+                                                                      .only(
+                                                                          left:
+                                                                              8),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .calendar_month,
+                                                                        size:
+                                                                            12,
+                                                                        color: HexColor(
+                                                                            '#FFFFFF'),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width:
+                                                                            10,
+                                                                      ),
+                                                                      Text(
+                                                                        snapshot
+                                                                            .data!
+                                                                            .data![index]
+                                                                            .startdate!,
+                                                                        style: GoogleFonts.ubuntu(
+                                                                            color: HexColor(
+                                                                                '#FFFFFF'),
+                                                                            fontSize:
+                                                                                10,
+                                                                            fontWeight:
+                                                                                FontWeight.w300),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                )),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 37,
+                                                          ),
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              Get.back();
+                                                            },
+                                                            child: Center(
+                                                              child: Container(
+                                                                height: 31,
+                                                                width: 96,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                        color:
+                                                                            primaryColor,
+                                                                        borderRadius:
+                                                                            const BorderRadius.all(
+                                                                          Radius.circular(
+                                                                              7.0),
+                                                                        ),
+                                                                        boxShadow: [
+                                                                      BoxShadow(
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .withOpacity(0.8),
+                                                                        spreadRadius:
+                                                                            4,
+                                                                        blurRadius:
+                                                                            10,
+                                                                        offset: Offset(
+                                                                            0,
+                                                                            3),
+                                                                      )
+                                                                    ]),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    'OK',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .left,
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontFamily:
+                                                                          "Netflix",
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontSize:
+                                                                          18,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ));
+                                      },
+                                      child: Card(
+                                        elevation: 5,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                        ),
+                                        child: SingleChildScrollView(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                    'assets/eventpic.png',
+                                                  ),
+                                                  fit: BoxFit.contain,
+                                                  alignment:
+                                                      Alignment.topRight),
+                                              borderRadius:
+                                                  BorderRadius.circular(4),
+                                            ),
+                                            //decoration:BoxDecoration(
+                                            //color: primaryColor,
+
+                                            //image: DecorationImage(image: AssetImage('assets/eventpic.png'))),
+
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 13, top: 20),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        snapshot
+                                                            .data!
+                                                            .data![index]
+                                                            .title!,
+                                                        style:
+                                                            GoogleFonts.ubuntu(
+                                                                color: HexColor(
+                                                                    '#606470'),
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Text(
+                                                        snapshot
+                                                            .data!
+                                                            .data![index]
+                                                            .startdate!,
+                                                        style:
+                                                            GoogleFonts.ubuntu(
+                                                                color: HexColor(
+                                                                    '#A5AAB7'),
+                                                                fontSize: 12,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                                Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 15, top: 30),
+                                                      child: Container(
+                                                          height: 27,
+                                                          width: 90,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            border: Border.all(
+                                                                color: HexColor(
+                                                                    '#E8E8E8')),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                              4,
+                                                            ),
+                                                            color: primaryColor,
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 8),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons
+                                                                      .calendar_month,
+                                                                  size: 12,
+                                                                  color: HexColor(
+                                                                      '#FFFFFF'),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 10,
+                                                                ),
+                                                                Text(
+                                                                  snapshot
+                                                                      .data!
+                                                                      .data![
+                                                                          index]
+                                                                      .startdate!,
+                                                                  style: GoogleFonts.ubuntu(
+                                                                      color: HexColor(
+                                                                          '#FFFFFF'),
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w300),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          )),
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 15, top: 30),
+                                                      child: Container(
+                                                          height: 27,
+                                                          width: 90,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            border: Border.all(
+                                                                color: HexColor(
+                                                                    '#E8E8E8')),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                              4,
+                                                            ),
+                                                            color: primaryColor,
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              'View Image',
+                                                              style: GoogleFonts.ubuntu(
+                                                                  color: HexColor(
+                                                                      '#FFFFFF'),
+                                                                  fontSize: 10,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300),
+                                                            ),
+                                                          )),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        )),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.white,
-                                    offset: Offset(0.0, 0.0),
-                                    spreadRadius: 0.1,
-                                    blurRadius: 4.0,
-                                  ),
-                                ], borderRadius: BorderRadius.circular(8)),
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        snapshot.data!.data![index].title
-                                            .toString()
-                                            .toUpperCase(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                        ),
                                       ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(snapshot.data!.data![index].startdate
-                                          .toString()),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(snapshot.data!.data![index].enddate
-                                          .toString()),
-                                      Row(
-                                        children: [
-                                          TextButton(
-                                              onPressed: () {
-                                                //Get.toNamed(vieweventimages);
-                                              },
-                                              child: Text('View Images')),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                                    ),
+                                  );
+                                },
+                                itemCount: snapshot.data!.data!.length),
                           );
-                        },
-                        itemCount: snapshot.data!.data!.length);
-                  } else if (snapshot.hasError) {
-                    return Icon(Icons.error_outline);
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
+                        } else if (snapshot.hasError) {
+                          return Icon(Icons.error_outline);
+                        } else {
+                          return CircularProgressIndicator();
+                        }
+                      }),
+                  Padding(
+                    padding: EdgeInsets.only(left: 38, top: 74),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                color: HexColor(' #FF9900'),
+                                image: DecorationImage(
+                                    image: AssetImage('assets/back.png'))),
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.030,
+                        ),
+                        Text(
+                          'Society Events',
+                          style: TextStyle(
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: primaryColor),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           );
         });
   }
