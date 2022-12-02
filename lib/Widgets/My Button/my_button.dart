@@ -1,45 +1,67 @@
 import 'package:flutter/material.dart';
-class MyButton extends StatefulWidget {
-  final double horizontalPadding ;
-  final double verticalPadding ;
+import 'package:google_fonts/google_fonts.dart';
+import '../../Constants/constants.dart';
+class MyButton extends StatelessWidget {
+  final OutlinedBorder? outlinedBorder;
   final double? height;
   final double? width;
+  final double? elevation;
+  final double? fontSize;
+  final double? letterSpacing;
+  final FontWeight? fontWeight;
   final double? border;
-
-  final Color? backgroundColor;
-  final Color? foregroundColor;
-
-  final Widget child;
+  final String name;
+  final Color? color;
+  final FontStyle? fontStyle;
+  final Color? textColor;
+  final int? maxLines;
   final void Function()? onPressed;
 
-   MyButton({super.key,this.foregroundColor,this.backgroundColor,required this.child,
-  required this.horizontalPadding,required this.verticalPadding, this.height,this.width, this.border, this.onPressed});
+  const MyButton
 
+  (
+  {super.key,
+  this.outlinedBorder,
+  this.fontStyle,
+  this.elevation,
+  this.fontWeight,
+  this.letterSpacing,
+  this.fontSize,
+  this.textColor,
+  this.height,
+  this.width,
+  this.border,
+  required this.name,
+  this.color,
+  this.maxLines,
+  this.onPressed});
 
-  @override
-  State<MyButton> createState() => _MyButtonState();
-}
-
-class _MyButtonState extends State<MyButton> {
   @override
   Widget build(BuildContext context) {
-    return   Padding(padding: EdgeInsets.symmetric(horizontal: widget.horizontalPadding, vertical: widget.verticalPadding),
-      child: Container(
-        width: widget.width,
-        height:widget.height,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              foregroundColor: widget.foregroundColor,
-            backgroundColor: widget.backgroundColor
+    return SizedBox(
+      width: width?? MediaQuery.of(context).size.width*0.4,
+      height: height,
+      child: ElevatedButton(
 
-          ),
-          child:  widget.child,
-          onPressed: widget.onPressed,
+        style: ElevatedButton.styleFrom(
+            elevation:elevation
+                ??5,
+            shape: outlinedBorder
+                ?? RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(border ??14.0)),
+            backgroundColor: color??primaryColor),
+        child: Text(
+          name,
+          maxLines: maxLines??1,
+          style: GoogleFonts.ubuntu(
+              color: textColor??Colors.white,
+              fontWeight: fontWeight,
+              letterSpacing: letterSpacing,
+              fontStyle: fontStyle,
+              fontSize: fontSize),
         ),
+        onPressed: onPressed,
       ),
-    )
-    ;
+    );
   }
 }

@@ -66,7 +66,8 @@ class _LoginState extends State<Login> {
                             height: 20,
                           ),
                      MyButton(width: MediaQuery.of(context).size.width,
-                       horizontalPadding: 8, verticalPadding: 8, child: Text('Login'),
+                       
+                       name: 'Login',
                       onPressed: ()
 
                        {

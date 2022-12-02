@@ -437,9 +437,8 @@ class GatekeeperReports extends GetView {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 253),
+                                            Align(
+                                              alignment: Alignment.topRight,
                                               child: Container(
                                                   height: 27,
                                                   width: 105,
@@ -483,7 +482,9 @@ class GatekeeperReports extends GetView {
                                                       ],
                                                     ),
                                                   )),
+                                            
                                             ),
+                                          
                                             Padding(
                                               padding: EdgeInsets.only(
                                                   left: 15, top: 15),
