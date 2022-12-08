@@ -17,6 +17,8 @@ import 'package:userapp/Module/Report%20to%20Sub%20Admin/View/Admin%20Reports/ad
 import 'package:userapp/Module/ReportsHistory/View/admin_reports_history_screen.dart';
 import 'package:userapp/Module/ServiceProviderAttendanceHistory/View/service_providers_attendance.dart';
 import 'package:userapp/Module/ServiceProviderAttendanceHistory/View/view_attendance_detail.dart';
+import 'package:userapp/Module/Signup/Resident%20Address%20Detail/View/resident_address_detail.dart';
+import 'package:userapp/Module/Signup/Resident%20Personal%20Detail/View/resident_personal_detail.dart';
 
 import 'package:userapp/Module/Splash/View/splash_screen.dart';
 import 'package:userapp/Widgets/image_show.dart';
@@ -59,6 +61,10 @@ class ScreenBindings extends Bindings {
     Get.lazyPut(() => ViewImage());
     Get.lazyPut(() => NoticeBoardScreen());
     Get.lazyPut(() => GatekeeperReports());
+    Get.lazyPut(() => ResidentPersonalDetail());
+    Get.lazyPut(() => ResidentAddressDetail());
+    
+    
     
     
     

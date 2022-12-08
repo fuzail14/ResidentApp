@@ -35,10 +35,10 @@ class ReportToAdmin extends GetView {
                         MyTextFormField(
                             controller: controller.reportTitleController,
                             hintTextColor: primaryColor,
-                            fillVisibility: true,
+                            
                             fillColor: Colors.white,
                             validator: emptyStringValidator,
-                            padding: EdgeInsets.all(8),
+                            
                             hintText: 'Enter Report Title',
                             labelText: 'Report Title',
                             onFocusedBorderColor: primaryColor,
@@ -51,10 +51,11 @@ class ReportToAdmin extends GetView {
                         MyTextFormField(
                             controller: controller.reportDescriptionController,
                             hintTextColor: primaryColor,
-                            fillVisibility: true,
+                            
+
                             fillColor: Colors.white,
                             validator: emptyStringValidator,
-                            padding: EdgeInsets.all(8),
+                            
                             hintText: 'Enter Report Description',
                             labelText: 'Report Description',
                             onFocusedBorderColor: primaryColor,
@@ -70,10 +71,10 @@ class ReportToAdmin extends GetView {
                             },
                             controller: controller.dateController,
                             hintTextColor: primaryColor,
-                            fillVisibility: true,
+                            
                             fillColor: Colors.white,
                             validator: emptyStringValidator,
-                            padding: EdgeInsets.all(8),
+                            
                             hintText: 'Enter Report Date',
                             labelText: 'Report Date',
                             onFocusedBorderColor: primaryColor,

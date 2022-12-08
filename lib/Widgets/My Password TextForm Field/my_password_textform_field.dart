@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
-
-class MyPasswordTextFormField extends StatefulWidget {
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
+class MyPasswordTextFormField extends StatelessWidget {
   final TextEditingController? controller;
-  final EdgeInsetsGeometry padding;
   final String? hintText;
   final String? labelText;
+  final FontWeight? fontWeight;
+  final double? width;
+  final double? height;
   final Color? labelTextColor;
   final Color? hintTextColor;
   final Color onFocusedBorderColor;
   final Color onEnabledBorderColor;
   final Color? fillcolor;
   final bool obscureText;
+  final EdgeInsetsGeometry? contentPadding;
+  final int? maxLines;
   final String? Function(String?)? validator;
   final void Function()? onTap;
   final void Function()? togglePasswordView;
 
   const MyPasswordTextFormField(
       {super.key,
+      this.maxLines,
+      this.contentPadding,
+      this.fontWeight,
       this.controller,
-      required this.padding,
+      this.width,
+      this.height,
       this.hintText,
       this.labelText,
       this.labelTextColor,
@@ -32,52 +41,61 @@ class MyPasswordTextFormField extends StatefulWidget {
       this.togglePasswordView});
 
   @override
-  State<MyPasswordTextFormField> createState() =>
-      _MyPasswordTextFormFieldState();
-}
-
-class _MyPasswordTextFormFieldState extends State<MyPasswordTextFormField> {
-  @override
   Widget build(BuildContext context) {
-    return Padding(padding:widget.padding ,
-      child: TextFormField(
+    return  Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.9,
+        height:height ,
+        child: TextFormField(
+          textAlign: TextAlign.left,
+          onTap: onTap,
+          validator: validator,
+          obscureText: obscureText,
 
-        onTap: widget.onTap,
-        validator: widget.validator,
-        obscureText: widget.obscureText,
-        maxLines: 1,
-        controller: widget.controller,
-        decoration: InputDecoration(
-          suffix: GestureDetector(
-              onTap: widget.togglePasswordView,
+
+          maxLines: maxLines??1,
+          controller: controller,
+          decoration: InputDecoration(
+            contentPadding: contentPadding??EdgeInsets.fromLTRB(60, 0, 0, 0),            suffix: GestureDetector(
+              onTap: togglePasswordView,
               child: Icon(
-                widget.obscureText
+                obscureText
                     ? Icons.visibility
                     : Icons.visibility_off,
               )),
-          labelStyle: TextStyle(
-            color: widget.labelTextColor,
-          ),
-          hintStyle: TextStyle(
-            color: widget.hintTextColor,
-          ),
-          hintText: widget.hintText,
-          labelText: widget.labelText,
-          fillColor: widget.fillcolor,
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide:
-                BorderSide(color: widget.onFocusedBorderColor, width: 1),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: BorderSide(
-              color: widget.onEnabledBorderColor,
-              width: 1,
+
+            labelStyle:   GoogleFonts.ubuntu(
+                fontStyle: FontStyle.normal,
+
+                // color: secondaryColor,
+                fontWeight: FontWeight.w400,
+                fontSize: 15,
+                color: HexColor('#B6B6B6')),
+            hintStyle: TextStyle(
+              color: hintTextColor,
+            ),
+            hintText: hintText,
+            labelText: labelText,
+            fillColor: fillcolor,
+
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              borderSide:
+              BorderSide(color: onFocusedBorderColor, width: 1.5),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              borderSide: BorderSide(
+                color: onEnabledBorderColor,
+                width: 1.5,
+              ),
             ),
           ),
         ),
       ),
     );
   }
+
+
 }

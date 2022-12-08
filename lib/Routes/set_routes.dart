@@ -30,6 +30,10 @@ const String viewimage = '/ViewImage';
 const String noticeboardscreen = '/NoticeBoardScreen';
 
 const String gatekeeperreports = '/GatekeeperReports';
+const String residentpersonaldetail = '/ResidentPersonalDetail';
+const String residentaddressdetail = '/ResidentaddressDetail';
+
+
 
 
 

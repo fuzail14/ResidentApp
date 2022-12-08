@@ -12,17 +12,14 @@ class MyButton extends StatelessWidget {
   final double? border;
   final String name;
   final Color? color;
-  final FontStyle? fontStyle;
   final Color? textColor;
   final int? maxLines;
   final void Function()? onPressed;
-
   const MyButton
 
   (
   {super.key,
   this.outlinedBorder,
-  this.fontStyle,
   this.elevation,
   this.fontWeight,
   this.letterSpacing,
@@ -48,7 +45,7 @@ class MyButton extends StatelessWidget {
                 ??5,
             shape: outlinedBorder
                 ?? RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(border ??14.0)),
+                    borderRadius: BorderRadius.circular(14.0)),
             backgroundColor: color??primaryColor),
         child: Text(
           name,
@@ -57,7 +54,6 @@ class MyButton extends StatelessWidget {
               color: textColor??Colors.white,
               fontWeight: fontWeight,
               letterSpacing: letterSpacing,
-              fontStyle: fontStyle,
               fontSize: fontSize),
         ),
         onPressed: onPressed,

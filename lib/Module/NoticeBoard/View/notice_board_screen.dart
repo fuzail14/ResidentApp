@@ -42,11 +42,10 @@ class NoticeBoardScreen extends GetView {
                                             children: [
                                               Center(
                                                   child: Text(
-                                                snapshot.data![index]
-                                                    .noticetitle!,
+                                                snapshot
+                                                    .data![index].noticetitle!,
                                                 style: GoogleFonts.ubuntu(
-                                                    color:
-                                                        HexColor('#4D4D4D'),
+                                                    color: HexColor('#4D4D4D'),
                                                     fontSize: 18,
                                                     fontWeight:
                                                         FontWeight.w700),
@@ -69,8 +68,8 @@ class NoticeBoardScreen extends GetView {
                                                   Text(
                                                     'Description',
                                                     style: GoogleFonts.ubuntu(
-                                                        color: HexColor(
-                                                            '#4D4D4D'),
+                                                        color:
+                                                            HexColor('#4D4D4D'),
                                                         fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w500),
@@ -109,13 +108,12 @@ class NoticeBoardScreen extends GetView {
                                                   Text(
                                                     'Date',
                                                     style: GoogleFonts.ubuntu(
-                                                        color: HexColor(
-                                                            '#4D4D4D'),
+                                                        color:
+                                                            HexColor('#4D4D4D'),
                                                         fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w500),
                                                   ),
-                                                 
                                                 ],
                                               ),
                                               SizedBox(
@@ -126,16 +124,16 @@ class NoticeBoardScreen extends GetView {
                                                     EdgeInsets.only(left: 30),
                                                 child: Text(
                                                   snapshot.data![index]
-                                                      .startdate!+"  ----  "+snapshot.data![index]
-                                                      .enddate!,
-                                                  style:
-                                                      GoogleFonts.ubuntu(
-                                                          color: HexColor(
-                                                              '#4D4D4D'),
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight
-                                                                  .w400),
+                                                          .startdate! +
+                                                      "  ----  " +
+                                                      snapshot.data![index]
+                                                          .enddate!,
+                                                  style: GoogleFonts.ubuntu(
+                                                      color:
+                                                          HexColor('#4D4D4D'),
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                 ),
                                               ),
                                               SizedBox(
@@ -156,8 +154,8 @@ class NoticeBoardScreen extends GetView {
                                                   Text(
                                                     'Time',
                                                     style: GoogleFonts.ubuntu(
-                                                        color: HexColor(
-                                                            '#4D4D4D'),
+                                                        color:
+                                                            HexColor('#4D4D4D'),
                                                         fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w500),
@@ -172,7 +170,8 @@ class NoticeBoardScreen extends GetView {
                                                     EdgeInsets.only(left: 30),
                                                 child: Text(
                                                   snapshot.data![index]
-                                                          .starttime! + "  ----  "+
+                                                          .starttime! +
+                                                      "  ----  " +
                                                       snapshot.data![index]
                                                           .endtime!,
                                                   style: GoogleFonts.ubuntu(
@@ -186,10 +185,7 @@ class NoticeBoardScreen extends GetView {
                                               SizedBox(
                                                 height: 37,
                                               ),
-      
                                               GestureDetector(
-      
-
                                                 onTap: () {
                                                   Get.back();
                                                 },
@@ -202,8 +198,7 @@ class NoticeBoardScreen extends GetView {
                                                         borderRadius:
                                                             const BorderRadius
                                                                 .all(
-                                                          Radius.circular(
-                                                              7.0),
+                                                          Radius.circular(7.0),
                                                         ),
                                                         boxShadow: [
                                                           BoxShadow(
@@ -222,8 +217,7 @@ class NoticeBoardScreen extends GetView {
                                                         textAlign:
                                                             TextAlign.left,
                                                         style: TextStyle(
-                                                          fontFamily:
-                                                              "Netflix",
+                                                          fontFamily: "Netflix",
                                                           fontWeight:
                                                               FontWeight.w600,
                                                           fontSize: 18,
@@ -248,15 +242,14 @@ class NoticeBoardScreen extends GetView {
                                     borderRadius: BorderRadius.circular(4.0),
                                   ),
                                   child: Stack(
-                                    
                                     children: [
                                       Align(
-                                        alignment: Alignment.bottomCenter,
-                                        child: Image.asset('assets/cardbackground.jpeg',width: 343,
-                                        
-                                        )),
-                                        
-                                      
+                                          alignment: Alignment.bottomCenter,
+                                          child: Image.asset(
+                                            'assets/cardbackground.jpeg',
+                                            width: 343,
+                                          )),
+
                                       Align(
                                         alignment: Alignment.topRight,
                                         child: Container(
@@ -264,8 +257,7 @@ class NoticeBoardScreen extends GetView {
                                             width: 97,
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color:
-                                                      HexColor('#E8E8E8')),
+                                                  color: HexColor('#E8E8E8')),
                                               borderRadius:
                                                   BorderRadius.circular(
                                                 4,
@@ -273,15 +265,13 @@ class NoticeBoardScreen extends GetView {
                                               color: primaryColor,
                                             ),
                                             child: Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 8),
+                                              padding: EdgeInsets.only(left: 8),
                                               child: Row(
                                                 children: [
                                                   Icon(
                                                     Icons.calendar_month,
                                                     size: 12,
-                                                    color:
-                                                        HexColor('#FFFFFF'),
+                                                    color: HexColor('#FFFFFF'),
                                                   ),
                                                   SizedBox(
                                                     width: 10,
@@ -289,61 +279,51 @@ class NoticeBoardScreen extends GetView {
                                                   Text(
                                                     snapshot.data![index]
                                                         .startdate!,
-                                                    style:
-                                                        GoogleFonts.ubuntu(
-                                                            color: HexColor(
-                                                                '#FFFFFF'),
-                                                            fontSize: 10,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w300),
+                                                    style: GoogleFonts.ubuntu(
+                                                        color:
+                                                            HexColor('#FFFFFF'),
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w300),
                                                   )
                                                 ],
                                               ),
                                             )),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(
-                                          left: 15,
-                                          top: 8
-                                        ),
+                                        padding:
+                                            EdgeInsets.only(left: 15, top: 8),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              snapshot.data![index]
-                                                  .noticetitle!,
+                                              snapshot
+                                                  .data![index].noticetitle!,
                                               style: GoogleFonts.ubuntu(
-                                                  color:
-                                                      HexColor('#606470'),
+                                                  color: HexColor('#606470'),
                                                   fontSize: 14,
-                                                  fontWeight:
-                                                      FontWeight.w500),
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                             SizedBox(
                                               height: 6,
                                             ),
                                             Text(
-                                              snapshot.data![index]
-                                                  .noticedetail!,
+                                              snapshot
+                                                  .data![index].noticedetail!,
                                               style: GoogleFonts.ubuntu(
-                                                  color:
-                                                      HexColor('#A5AAB7'),
+                                                  color: HexColor('#A5AAB7'),
                                                   fontSize: 12,
-                                                  fontWeight:
-                                                      FontWeight.w500),
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      
 
-                              
                                       // Container(
                                       //   width: Get.width,
                                       //   height: Get.height,
-                              
+
                                       //   decoration: BoxDecoration(
                                       //     borderRadius:
                                       //           BorderRadius.circular(17),
@@ -352,7 +332,7 @@ class NoticeBoardScreen extends GetView {
                                       //           color: Color.fromARGB(
                                       //               189, 224, 224, 223),
                                       //           spreadRadius: 5,
-                              
+
                                       //           blurRadius: 9,
                                       //           offset: Offset(0,
                                       //               3), // changes position of shadow
@@ -408,7 +388,6 @@ class NoticeBoardScreen extends GetView {
                 ],
               ),
             ),
-          
           ],
         )),
       ),

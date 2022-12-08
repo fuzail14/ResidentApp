@@ -16,6 +16,8 @@ import 'package:userapp/Module/PanicMode/View/panic_mode_screen.dart';
 import 'package:userapp/Module/ReportsHistory/View/admin_reports_history_screen.dart';
 import 'package:userapp/Module/ServiceProviderAttendanceHistory/View/service_providers_attendance.dart';
 import 'package:userapp/Module/ServiceProviderAttendanceHistory/View/view_attendance_detail.dart';
+import 'package:userapp/Module/Signup/Resident%20Address%20Detail/View/resident_address_detail.dart';
+import 'package:userapp/Module/Signup/Resident%20Personal%20Detail/View/resident_personal_detail.dart';
 import 'package:userapp/Module/Splash/View/splash_screen.dart';
 import 'package:userapp/Routes/screen_binding.dart';
 import 'package:userapp/Routes/set_routes.dart';
@@ -181,6 +183,24 @@ class RouteManagement {
         // transition: Transition.circularReveal,
         //      transitionDuration: Duration(seconds: 1)
       ),
+
+      GetPage(
+        name: residentpersonaldetail,
+        page: () => ResidentPersonalDetail(),
+        binding: ScreenBindings(),
+        // transition: Transition.circularReveal,
+        //      transitionDuration: Duration(seconds: 1)
+      ),
+      
+      GetPage(
+        name: residentaddressdetail,
+        page: () => ResidentAddressDetail(),
+        binding: ScreenBindings(),
+        // transition: Transition.circularReveal,
+        //      transitionDuration: Duration(seconds: 1)
+      ),
+      
+      
       
       
     ];
