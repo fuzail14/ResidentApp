@@ -9,19 +9,17 @@ import 'package:userapp/Utils/custom_alert_dialog.dart';
 
 import '../Controller/admin_reports_history_controller.dart';
 
-
 class ReportsHistoryScreen extends GetView {
+  final AdmoinReportsHistotryController adminReportsController =
+      Get.put(AdmoinReportsHistotryController());
 
-  final AdmoinReportsHistotryController adminReportsController = Get.put(AdmoinReportsHistotryController());
-
-   @override
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<AdmoinReportsHistotryController>(
       init: AdmoinReportsHistotryController(),
       builder: (controller) => Scaffold(
         appBar: AppBar(
-          title: Text(
-              'Reports History'),
+          title: Text('Reports History'),
           backgroundColor: primaryColor,
           actions: [],
         ),
@@ -291,5 +289,4 @@ class ReportsHistoryScreen extends GetView {
       ),
     );
   }
-
 }

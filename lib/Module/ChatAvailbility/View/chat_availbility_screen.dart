@@ -121,19 +121,17 @@ class SingleChatWidget extends StatelessWidget {
   final String? imageUrl;
 
   const SingleChatWidget({
-    
     this.chatMessage,
     this.chatTitle,
     this.seenStatusColor,
     this.imageUrl,
-  }) ;
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-
-        Get.toNamed(chatscreen,arguments:chatTitle );
+      onTap: () {
+        Get.toNamed(chatscreen, arguments: chatTitle);
       },
       child: Row(
         children: [
@@ -161,7 +159,6 @@ class SingleChatWidget extends StatelessWidget {
                   ),
                 ),
               ]),
-            
             ),
           ),
         ],

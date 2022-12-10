@@ -29,12 +29,10 @@ class CustomTextField extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(15.0),
           )),
-     
       keyboardType: keyboardType,
       controller: controller,
       validator: validator,
       onChanged: onChanged,
-      
     );
   }
 }

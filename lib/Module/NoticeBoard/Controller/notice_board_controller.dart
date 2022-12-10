@@ -27,8 +27,6 @@ class NoticeBoardController extends GetxController {
 
   Future<List<NoticeBoardModel>> viewNoticeBoardApi(
       int subadminid, String token) async {
-    
-
     final response = await Http.get(
       Uri.parse(Api.viewallnoticesapi + "/" + subadminid.toString()),
       headers: <String, String>{
@@ -39,8 +37,6 @@ class NoticeBoardController extends GetxController {
     var data = jsonDecode(response.body.toString());
 
     if (response.statusCode == 200) {
-      
-
       li = (data["data"] as List)
           .map((e) => NoticeBoardModel(
                 id: e['id'],
@@ -56,10 +52,7 @@ class NoticeBoardController extends GetxController {
           .toList();
 
       return li;
-      
     }
     return li;
   }
-
-
 }

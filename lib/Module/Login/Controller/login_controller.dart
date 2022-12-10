@@ -5,6 +5,7 @@ import 'package:http/http.dart' as Http;
 import '../../../Constants/api_routes.dart';
 import '../../../Routes/set_routes.dart';
 import '../../../Services/Shared Preferences/MySharedPreferences.dart';
+import '../../Signup/Resident Address Detail/View/resident_address_detail.dart';
 import '../Model/User.dart';
 
 class LoginController extends GetxController {
@@ -38,22 +39,23 @@ class LoginController extends GetxController {
       if (response.statusCode == 200 && data['data']['roleid'] == 3) {
         print(data);
         print(data['data']['firstname']);
-        print(data['data']['residentid']);
+        print(data['data']['id']);
         final User user = User(
-            userid: data['data']['residentid'],
-            subadminid: data['data']['subadminid'],
+            userid: data['data']['id'],
+            //subadminid: data['data']['subadminid'],
             firstName: data['data']['firstname'],
             lastName: data['data']['lastname'],
             cnic: data['data']['cnic'],
             roleId: data['data']['roleid'],
             roleName: data['data']['rolename'],
+            address: data['data']['address'],
             bearerToken: data['Bearer']);
         MySharedPreferences.setUserData(user: user);
         print(user.userid);
 
         print(response.statusCode);
         print(response.statusCode);
-        Get.offAndToNamed(homescreen, arguments: user);
+        Get.offAndToNamed(residentaddressdetail, arguments: user);
         Get.snackbar(
           "Login Successfully",
           "Welcome 😉 " +
@@ -86,7 +88,6 @@ class LoginController extends GetxController {
     } catch (SocketException) {
       Get.snackbar('Error Message', 'No Internet Connection');
     }
-
   }
 
   void togglePasswordView() {

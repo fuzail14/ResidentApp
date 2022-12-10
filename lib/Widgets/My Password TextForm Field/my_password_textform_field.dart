@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+
 class MyPasswordTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
@@ -42,30 +43,26 @@ class MyPasswordTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.9,
-        height:height ,
+        height: height,
         child: TextFormField(
           textAlign: TextAlign.left,
           onTap: onTap,
           validator: validator,
           obscureText: obscureText,
-
-
-          maxLines: maxLines??1,
+          maxLines: maxLines ?? 1,
           controller: controller,
           decoration: InputDecoration(
-            contentPadding: contentPadding??EdgeInsets.fromLTRB(60, 0, 0, 0),            suffix: GestureDetector(
-              onTap: togglePasswordView,
-              child: Icon(
-                obscureText
-                    ? Icons.visibility
-                    : Icons.visibility_off,
-              )),
-
-            labelStyle:   GoogleFonts.ubuntu(
+            contentPadding: contentPadding ?? EdgeInsets.fromLTRB(60, 0, 0, 0),
+            suffix: GestureDetector(
+                onTap: togglePasswordView,
+                child: Icon(
+                  obscureText ? Icons.visibility : Icons.visibility_off,
+                )),
+            labelStyle: GoogleFonts.ubuntu(
                 fontStyle: FontStyle.normal,
 
                 // color: secondaryColor,
@@ -78,11 +75,9 @@ class MyPasswordTextFormField extends StatelessWidget {
             hintText: hintText,
             labelText: labelText,
             fillColor: fillcolor,
-
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
-              borderSide:
-              BorderSide(color: onFocusedBorderColor, width: 1.5),
+              borderSide: BorderSide(color: onFocusedBorderColor, width: 1.5),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
@@ -96,6 +91,4 @@ class MyPasswordTextFormField extends StatelessWidget {
       ),
     );
   }
-
-
 }

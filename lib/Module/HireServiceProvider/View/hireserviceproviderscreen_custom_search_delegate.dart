@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class HireServiceProviderScreenCustomSearchDelegate extends SearchDelegate {
@@ -39,8 +38,8 @@ class HireServiceProviderScreenCustomSearchDelegate extends SearchDelegate {
       );
     }
     return Container();
-    
-    //Add the search term to the searchBloc. 
+
+    //Add the search term to the searchBloc.
     //The Bloc will then handle the searching and add the results to the searchResults stream.
     //This is the equivalent of submitting the search term to whatever search service you are using
     // InheritedBlocs.of(context)
@@ -52,7 +51,7 @@ class HireServiceProviderScreenCustomSearchDelegate extends SearchDelegate {
     //   children: <Widget>[
     //     //Build the results based on the searchResults stream in the searchBloc
     //     StreamBuilder(
-          
+
     //       builder: (context, AsyncSnapshot<List<Result>> snapshot) {
     //         if (!snapshot.hasData) {
     //           return Column(
@@ -86,12 +85,11 @@ class HireServiceProviderScreenCustomSearchDelegate extends SearchDelegate {
     //     ),
     //   ],
     // );
-  
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // This method is called everytime the search term changes. 
+    // This method is called everytime the search term changes.
     // If you want to add search suggestions as the user enters their search term, this is the place to do that.
     return Column();
   }

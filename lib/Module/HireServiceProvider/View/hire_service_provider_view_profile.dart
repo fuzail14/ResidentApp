@@ -27,7 +27,6 @@ class _HireServiceProviderViewProfileScreenState
 
   int? currentTimeIndex;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -361,10 +360,8 @@ class _HireServiceProviderViewProfileScreenState
                                 )),
                               ),
                             );
-
                           }),
                     ),
-                   
                     SizedBox(
                       height: 20,
                     ),

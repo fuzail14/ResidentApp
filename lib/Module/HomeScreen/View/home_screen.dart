@@ -59,7 +59,6 @@ class HomeScreen extends GetView {
                                     controller.scaffoldKey.currentState!
                                         .openDrawer();
                                   }),
-                                  
                               Padding(
                                 padding: EdgeInsets.only(
                                     left: MediaQuery.of(context).size.width *
@@ -211,8 +210,19 @@ class HomeScreen extends GetView {
                                 title: 'Notice Board',
                                 Icon: Icon(Icons.notification_add,
                                     color: overallcolor)),
+
                           ],
                         ),
+                         ListTile(
+                      leading: Icon(
+                        Icons.logout,
+                      ),
+                      title: const Text('Logout'),
+                      onTap: () {
+                        MySharedPreferences.deleteUserData();
+                        Get.offAllNamed(loginscreen);
+                      },
+                    ),
                       ]),
                     ),
                   ),

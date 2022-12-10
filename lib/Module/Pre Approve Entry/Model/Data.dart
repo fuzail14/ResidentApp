@@ -18,23 +18,25 @@ import 'dart:convert';
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
 String dataToJson(Data data) => json.encode(data.toJson());
+
 class Data {
   Data({
-      int? id, 
-      int? gatekeeperid, 
-      int? userid, 
-      String? visitortype, 
-      String? name, 
-      String? description, 
-      String? cnic, 
-      String? mobileno, 
-      String? vechileno, 
-      String? arrivaldate, 
-      String? arrivaltime, 
-      int? status, 
-      String? statusdescription, 
-      String? createdAt, 
-      String? updatedAt,}){
+    int? id,
+    int? gatekeeperid,
+    int? userid,
+    String? visitortype,
+    String? name,
+    String? description,
+    String? cnic,
+    String? mobileno,
+    String? vechileno,
+    String? arrivaldate,
+    String? arrivaltime,
+    int? status,
+    String? statusdescription,
+    String? createdAt,
+    String? updatedAt,
+  }) {
     _id = id;
     _gatekeeperid = gatekeeperid;
     _userid = userid;
@@ -50,7 +52,7 @@ class Data {
     _statusdescription = statusdescription;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
-}
+  }
 
   Data.fromJson(dynamic json) {
     _id = json['id'];
@@ -84,37 +86,40 @@ class Data {
   String? _statusdescription;
   String? _createdAt;
   String? _updatedAt;
-Data copyWith({  int? id,
-  int? gatekeeperid,
-  int? userid,
-  String? visitortype,
-  String? name,
-  String? description,
-  String? cnic,
-  String? mobileno,
-  String? vechileno,
-  String? arrivaldate,
-  String? arrivaltime,
-  int? status,
-  String? statusdescription,
-  String? createdAt,
-  String? updatedAt,
-}) => Data(  id: id ?? _id,
-  gatekeeperid: gatekeeperid ?? _gatekeeperid,
-  userid: userid ?? _userid,
-  visitortype: visitortype ?? _visitortype,
-  name: name ?? _name,
-  description: description ?? _description,
-  cnic: cnic ?? _cnic,
-  mobileno: mobileno ?? _mobileno,
-  vechileno: vechileno ?? _vechileno,
-  arrivaldate: arrivaldate ?? _arrivaldate,
-  arrivaltime: arrivaltime ?? _arrivaltime,
-  status: status ?? _status,
-  statusdescription: statusdescription ?? _statusdescription,
-  createdAt: createdAt ?? _createdAt,
-  updatedAt: updatedAt ?? _updatedAt,
-);
+  Data copyWith({
+    int? id,
+    int? gatekeeperid,
+    int? userid,
+    String? visitortype,
+    String? name,
+    String? description,
+    String? cnic,
+    String? mobileno,
+    String? vechileno,
+    String? arrivaldate,
+    String? arrivaltime,
+    int? status,
+    String? statusdescription,
+    String? createdAt,
+    String? updatedAt,
+  }) =>
+      Data(
+        id: id ?? _id,
+        gatekeeperid: gatekeeperid ?? _gatekeeperid,
+        userid: userid ?? _userid,
+        visitortype: visitortype ?? _visitortype,
+        name: name ?? _name,
+        description: description ?? _description,
+        cnic: cnic ?? _cnic,
+        mobileno: mobileno ?? _mobileno,
+        vechileno: vechileno ?? _vechileno,
+        arrivaldate: arrivaldate ?? _arrivaldate,
+        arrivaltime: arrivaltime ?? _arrivaltime,
+        status: status ?? _status,
+        statusdescription: statusdescription ?? _statusdescription,
+        createdAt: createdAt ?? _createdAt,
+        updatedAt: updatedAt ?? _updatedAt,
+      );
   int? get id => _id;
   int? get gatekeeperid => _gatekeeperid;
   int? get userid => _userid;
@@ -150,5 +155,4 @@ Data copyWith({  int? id,
     map['updated_at'] = _updatedAt;
     return map;
   }
-
 }

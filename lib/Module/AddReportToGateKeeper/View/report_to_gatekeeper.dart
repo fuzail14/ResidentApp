@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:userapp/Routes/set_routes.dart';
@@ -9,12 +7,10 @@ import '../Controller/add_report_to_gatekeeper_controller.dart';
 
 class ReportToGateKeeper extends StatefulWidget {
   @override
-  State<ReportToGateKeeper> createState() =>
-      _ReportToGateKeeperState();
+  State<ReportToGateKeeper> createState() => _ReportToGateKeeperState();
 }
 
-class _ReportToGateKeeperState
-    extends State<ReportToGateKeeper> {
+class _ReportToGateKeeperState extends State<ReportToGateKeeper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,7 +130,6 @@ class _ReportToGateKeeperState
                         SizedBox(
                           height: 20,
                         ),
-                        
 
                         // fourth Element
                         TextFormField(

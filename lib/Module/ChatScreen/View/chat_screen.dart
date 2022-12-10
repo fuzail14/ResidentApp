@@ -4,18 +4,14 @@ import 'package:get/get.dart';
 import 'package:userapp/Models/chat_message_model.dart';
 import 'package:userapp/Utils/constants.dart';
 
-
 class ChatScreen extends StatefulWidget {
-  
-
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
   var name = Get.arguments;
-  
+
   List<ChatMessage> messages = [
     ChatMessage(messageContent: "Hello, Will", messageType: "receiver"),
     ChatMessage(messageContent: "How have you been?", messageType: "receiver"),
@@ -74,15 +70,19 @@ class _ChatScreenState extends State<ChatScreen> {
                       Text(
                         name,
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500,
-                            color: Colors.white
-                            ),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white),
                       ),
-                      
                     ],
                   ),
                 ),
-                GestureDetector(onTap: () {}, child: Icon(Icons.call,color: Colors.white,))
+                GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.call,
+                      color: Colors.white,
+                    ))
               ],
             ),
           ),
@@ -115,9 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       padding: EdgeInsets.all(16),
                       child: Text(
                         messages[index].messageContent,
-                        style: TextStyle(fontSize: 15,
-                        color: Colors.white
-                        ),
+                        style: TextStyle(fontSize: 15, color: Colors.white),
                       ),
                     ),
                   ),

@@ -38,7 +38,6 @@ class _LoginState extends State<Login> {
                           SizedBox(height: 20),
                           MyTextFormField(
                               controller: controller.userCnicController,
-                              
                               validator: emptyStringValidator,
                               hintText: 'Enter Cnic',
                               labelText: 'Cnic',
@@ -48,7 +47,6 @@ class _LoginState extends State<Login> {
                             height: 20,
                           ),
                           MyPasswordTextFormField(
-                              
                               controller: controller.userPasswordController,
                               validator: emptyStringValidator,
                               labelText: 'Password',

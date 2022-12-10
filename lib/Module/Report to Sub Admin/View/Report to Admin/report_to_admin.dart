@@ -35,10 +35,8 @@ class ReportToAdmin extends GetView {
                         MyTextFormField(
                             controller: controller.reportTitleController,
                             hintTextColor: primaryColor,
-                            
                             fillColor: Colors.white,
                             validator: emptyStringValidator,
-                            
                             hintText: 'Enter Report Title',
                             labelText: 'Report Title',
                             onFocusedBorderColor: primaryColor,
@@ -51,11 +49,8 @@ class ReportToAdmin extends GetView {
                         MyTextFormField(
                             controller: controller.reportDescriptionController,
                             hintTextColor: primaryColor,
-                            
-
                             fillColor: Colors.white,
                             validator: emptyStringValidator,
-                            
                             hintText: 'Enter Report Description',
                             labelText: 'Report Description',
                             onFocusedBorderColor: primaryColor,
@@ -71,10 +66,8 @@ class ReportToAdmin extends GetView {
                             },
                             controller: controller.dateController,
                             hintTextColor: primaryColor,
-                            
                             fillColor: Colors.white,
                             validator: emptyStringValidator,
-                            
                             hintText: 'Enter Report Date',
                             labelText: 'Report Date',
                             onFocusedBorderColor: primaryColor,
@@ -103,9 +96,7 @@ class ReportToAdmin extends GetView {
                               return null;
                             }
                           },
-                          
                           name: 'Submit Report ',
-                          
                         )
                         // fourth Element
 

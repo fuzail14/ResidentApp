@@ -38,8 +38,6 @@ class EventScreenController extends GetxController {
     print(response.body);
     var data = jsonDecode(response.body.toString());
 
-    
-
     if (response.statusCode == 200) {
       return Event.fromJson(data);
     }

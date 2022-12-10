@@ -32,8 +32,8 @@ class MyTextFormField extends StatelessWidget {
   final void Function()? onTap;
   const MyTextFormField(
       {super.key,
-   // required  this.obscureText,
-   //    this.togglePasswordView,
+      // required  this.obscureText,
+      //    this.togglePasswordView,
       this.maxLines,
       this.contentPadding,
       this.prefixIcon,
@@ -61,19 +61,17 @@ class MyTextFormField extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         height: height,
         child: TextFormField(
-
           // obscureText: widget.obscureText,
           textAlign: TextAlign.left,
           onTap: onTap,
           validator: validator,
-          maxLines: maxLines??1,
+          maxLines: maxLines ?? 1,
           controller: controller,
           cursorColor: primaryColor,
           decoration: InputDecoration(
-
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
-            contentPadding: contentPadding??EdgeInsets.fromLTRB(60, 0, 20, 0),
+            contentPadding: contentPadding ?? EdgeInsets.fromLTRB(60, 0, 20, 0),
             // suffix: GestureDetector(
             //     // onTap: widget.togglePasswordView,
             //     child: Icon(
@@ -81,24 +79,21 @@ class MyTextFormField extends StatelessWidget {
             //           ? Icons.visibility
             //           : Icons.visibility_off,
             //     )),
-            filled: fill??true,
+            filled: fill ?? true,
             labelStyle: GoogleFonts.ubuntu(
-
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.w400,
                 fontSize: 15,
-                color:labelTextColor?? HexColor('#B6B6B6')),
+                color: labelTextColor ?? HexColor('#B6B6B6')),
             hintStyle: TextStyle(
-
-              color:hintTextColor??HexColor("#B6B6B6"),
+              color: hintTextColor ?? HexColor("#B6B6B6"),
             ),
             hintText: hintText,
             labelText: labelText,
-            fillColor: fillColor??Colors.white,
+            fillColor: fillColor ?? Colors.white,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
-              borderSide:
-              BorderSide(color: onFocusedBorderColor, width: 1.5),
+              borderSide: BorderSide(color: onFocusedBorderColor, width: 1.5),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
@@ -112,5 +107,4 @@ class MyTextFormField extends StatelessWidget {
       ),
     );
   }
-
 }

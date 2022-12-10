@@ -20,7 +20,6 @@ class AddReportToAdminController extends GetxController {
     print(userdata.userid);
     print(userdata.bearerToken);
     print(userdata.subadminid);
-
   }
 
   final formKey = new GlobalKey<FormState>();
@@ -47,7 +46,6 @@ class AddReportToAdminController extends GetxController {
     required String description,
     required String date,
     required int subadminid,
-
   }) async {
     print(userid);
     print(subadminid);
@@ -79,7 +77,7 @@ class AddReportToAdminController extends GetxController {
       print(data);
       print(response.statusCode);
 
-      Get.offAndToNamed(adminreports,arguments: user);
+      Get.offAndToNamed(adminreports, arguments: user);
 
       Get.snackbar("Report Submitted  Successfully", "");
     } else {

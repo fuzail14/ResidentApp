@@ -6,13 +6,15 @@ import 'dart:convert';
 
 Reports reportsFromJson(String str) => Reports.fromJson(json.decode(str));
 String reportsToJson(Reports data) => json.encode(data.toJson());
+
 class Reports {
   Reports({
-      bool? success, 
-      List<Data>? data,}){
+    bool? success,
+    List<Data>? data,
+  }) {
     _success = success;
     _data = data;
-}
+  }
 
   Reports.fromJson(dynamic json) {
     _success = json['success'];
@@ -25,11 +27,14 @@ class Reports {
   }
   bool? _success;
   List<Data>? _data;
-Reports copyWith({  bool? success,
-  List<Data>? data,
-}) => Reports(  success: success ?? _success,
-  data: data ?? _data,
-);
+  Reports copyWith({
+    bool? success,
+    List<Data>? data,
+  }) =>
+      Reports(
+        success: success ?? _success,
+        data: data ?? _data,
+      );
   bool? get success => _success;
   List<Data>? get data => _data;
 
@@ -41,5 +46,4 @@ Reports copyWith({  bool? success,
     }
     return map;
   }
-
 }

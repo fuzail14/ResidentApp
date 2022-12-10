@@ -35,11 +35,9 @@ class GatekeeperReports extends GetView {
                                   child: GestureDetector(
                                     onTap: () {
                                       showDialog(
-                                        
                                           context: context,
                                           builder: (BuildContext context) =>
                                               AlertDialog(
-                                                
                                                 title: Column(
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
@@ -131,7 +129,9 @@ class GatekeeperReports extends GetView {
                                                                   FontWeight
                                                                       .w500),
                                                         ),
-                                                        SizedBox(width: 70,),
+                                                        SizedBox(
+                                                          width: 70,
+                                                        ),
                                                         CircleAvatar(
                                                             maxRadius: 10,
                                                             backgroundColor:
@@ -170,35 +170,36 @@ class GatekeeperReports extends GetView {
                                                                 .data
                                                                 .data[index]
                                                                 .arrivaldate,
-                                                            style:
-                                                                GoogleFonts.ubuntu(
-                                                                    color: HexColor(
-                                                                        '#4D4D4D'),
-                                                                    fontSize: 12,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
+                                                            style: GoogleFonts.ubuntu(
+                                                                color: HexColor(
+                                                                    '#4D4D4D'),
+                                                                fontSize: 12,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
                                                           ),
-                                                          SizedBox(width: 70,),
+                                                          SizedBox(
+                                                            width: 70,
+                                                          ),
                                                           Flexible(
                                                             child: Text(
                                                               'hsahjsahs-987668jsjs8',
-                                                                  overflow: TextOverflow.ellipsis,
-                                                              style:
-                                                                  GoogleFonts.ubuntu(
-                                                                      color: HexColor(
-                                                                          '#4D4D4D'),
-                                                                      fontSize: 12,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: GoogleFonts.ubuntu(
+                                                                  color: HexColor(
+                                                                      '#4D4D4D'),
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
                                                             ),
                                                           ),
-                                                          
                                                         ],
                                                       ),
                                                     ),
-                                                   SizedBox(
+                                                    SizedBox(
                                                       height: 30,
                                                     ),
                                                     Row(
@@ -249,7 +250,7 @@ class GatekeeperReports extends GetView {
                                                                         .w400),
                                                       ),
                                                     ),
-                                                   SizedBox(
+                                                    SizedBox(
                                                       height: 30,
                                                     ),
                                                     Row(
@@ -482,9 +483,8 @@ class GatekeeperReports extends GetView {
                                                       ],
                                                     ),
                                                   )),
-                                            
                                             ),
-                                          
+
                                             Padding(
                                               padding: EdgeInsets.only(
                                                   left: 15, top: 15),
@@ -703,7 +703,6 @@ class GatekeeperReports extends GetView {
                     ],
                   ),
                 ),
-             
               ],
             )),
           );

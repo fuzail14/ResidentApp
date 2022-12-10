@@ -7,8 +7,7 @@ import 'package:http/http.dart' as Http;
 
 import '../Model/PreApproveEntry.dart';
 
-class PreApproveEntryController extends GetxController
-{
+class PreApproveEntryController extends GetxController {
   late final User userdata;
   var user = Get.arguments;
   @override
@@ -16,12 +15,8 @@ class PreApproveEntryController extends GetxController
     // TODO: implement onInit
     super.onInit();
 
-    userdata=user;
-
+    userdata = user;
   }
-
-
-
 
   viewPreApproveEntryReportsApi(int userid, String token) async {
     print("token $token");
@@ -35,7 +30,6 @@ class PreApproveEntryController extends GetxController
     );
     print(response.statusCode);
     var data = jsonDecode(response.body.toString());
-    
 
     if (response.statusCode == 200) {
       return PreApproveEntry.fromJson(data);
@@ -43,12 +37,4 @@ class PreApproveEntryController extends GetxController
     return PreApproveEntry.fromJson(data);
     ;
   }
-
-
-
-
-
-
-
-
 }

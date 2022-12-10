@@ -39,7 +39,6 @@ class AdminReportsController extends GetxController {
       return Reports.fromJson(data);
     }
     return Reports.fromJson(data);
-    
   }
 
   ProblemSolvedButtonApi(int reportid, int userid, String token) async {

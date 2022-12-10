@@ -8,11 +8,11 @@ class MyBackButton extends StatelessWidget {
   final String? text;
   final Widget? widget;
 
-  const MyBackButton({ this.text,this.widget});
+  const MyBackButton({this.text, this.widget});
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: EdgeInsets.only(left: 38, top: 74),
       child: Row(
         children: [
@@ -21,11 +21,9 @@ class MyBackButton extends StatelessWidget {
               Get.back();
             },
             child: Container(
-
-             child:  SvgPicture.asset(
-               "assets/arrow_back.svg",
-
-             ),
+              child: SvgPicture.asset(
+                "assets/arrow_back.svg",
+              ),
             ),
           ),
           SizedBox(
@@ -39,8 +37,9 @@ class MyBackButton extends StatelessWidget {
                 fontSize: 16,
                 color: Colors.black),
           ),
-          Container(child: widget,)
-
+          Container(
+            child: widget,
+          )
         ],
       ),
     );

@@ -1,15 +1,12 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:userapp/Routes/set_routes.dart';
 import 'package:userapp/Utils/constants.dart';
 
-
 class NotificationsScreen extends StatefulWidget {
   @override
-  State<NotificationsScreen> createState() =>
-      _NotificationsScreenState();
+  State<NotificationsScreen> createState() => _NotificationsScreenState();
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
@@ -182,8 +179,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                                           .validate()) {
                                                         formKey.currentState!
                                                             .save();
-                                                         Get.offAllNamed(
-                                                             homescreen);
+                                                        Get.offAllNamed(
+                                                            homescreen);
                                                       } else {
                                                         return null;
                                                       }
@@ -219,7 +216,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                           );
                                         });
                                   },
-                                  child:  Text(
+                                  child: Text(
                                     'Reject',
                                     style: TextStyle(
                                         color: Colors.white,
@@ -228,7 +225,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                 ),
                               ],
                             ),
-                       
                           ],
                         ),
                       ),

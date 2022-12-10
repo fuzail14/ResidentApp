@@ -8,15 +8,17 @@ import 'package:userapp/Routes/routes_managment.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:userapp/Routes/set_routes.dart';
-FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =FlutterLocalNotificationsPlugin();
 
- main() async{
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+main() async {
   await WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   const AndroidInitializationSettings initializationSettingsAndroid =
-  AndroidInitializationSettings("@mipmap/ic_launcher");
+      AndroidInitializationSettings("@mipmap/ic_launcher");
 
   // final DarwinInitializationSettings initializationSettingsDarwin =
   // DarwinInitializationSettings(
@@ -29,13 +31,12 @@ FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =FlutterLocalNot
   //
   //     );
 
-  InitializationSettings initializationSettings =InitializationSettings(
-
+  InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
-      // iOS:  initializationSettingsDarwin
-
+    // iOS:  initializationSettingsDarwin
   );
-  bool? initialized=await   flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  bool? initialized =
+      await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   print(initialized.toString());
 
   // flutterLocalNotificationsPlugin.initialize(initializationSettings,
@@ -43,8 +44,6 @@ FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =FlutterLocalNot
 
   runApp(MyApp());
 }
-
-
 
 // void onDidReceiveLocalNotification(
 //     int id, String title, String body, String payload) async {
@@ -73,13 +72,12 @@ FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =FlutterLocalNot
 //    );
 // }
 
-
-void checkForNotifications   ()async
-
-{   NotificationAppLaunchDetails?    no=  await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
-print(no?.notificationResponse?.payload);
-
+void checkForNotifications() async {
+  NotificationAppLaunchDetails? no =
+      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+  print(no?.notificationResponse?.payload);
 }
+
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 
@@ -89,21 +87,15 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // await Firebase.initializeApp();
 
   print("Handling a background message: ${message}");
-
 }
 
-
 class MyApp extends StatefulWidget {
-
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
-
-   @override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -115,9 +107,10 @@ class _MyAppState extends State<MyApp> {
       print('--------');
       print(token);
       print('--------');
-    });checkForNotifications();
-
+    });
+    checkForNotifications();
   }
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

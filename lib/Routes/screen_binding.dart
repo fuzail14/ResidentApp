@@ -28,7 +28,6 @@ import '../Module/Login/View/login_screen.dart';
 import '../Module/Pre Approve Entry/View/pre_approve_entry_screen.dart';
 import '../Module/Report to Sub Admin/View/Report to Admin/report_to_admin.dart';
 
-
 class ScreenBindings extends Bindings {
   @override
   void dependencies() {
@@ -40,7 +39,7 @@ class ScreenBindings extends Bindings {
     Get.lazyPut(() => ChatAvailbilityScreen());
     Get.lazyPut(() => ReportToAdmin());
     Get.lazyPut(() => AdminReports());
-    
+
     Get.lazyPut(() => ReportToGateKeeper());
     Get.lazyPut(() => ReportsHistoryScreen());
     Get.lazyPut(() => GuestsHistoryScreen());
@@ -63,12 +62,5 @@ class ScreenBindings extends Bindings {
     Get.lazyPut(() => GatekeeperReports());
     Get.lazyPut(() => ResidentPersonalDetail());
     Get.lazyPut(() => ResidentAddressDetail());
-    
-    
-    
-    
-    
-    
-    
   }
 }

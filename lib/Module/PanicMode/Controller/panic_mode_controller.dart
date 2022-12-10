@@ -12,8 +12,6 @@ class PanicModeController extends GetxController {
 
   selectedProblem(var index) {
     selectedProblemIndex = index;
-    
-  
 
     selectedButton = true;
 

@@ -3,6 +3,8 @@ class User {
   final String? firstName;
   final String? lastName;
   final String? cnic;
+  final String? address;
+  
   final int? roleId;
   final int? subadminid;
   final String? roleName;
@@ -16,5 +18,7 @@ class User {
       this.cnic,
       this.roleId,
       this.roleName,
-      this.bearerToken});
+      this.bearerToken,
+      this.address
+      });
 }

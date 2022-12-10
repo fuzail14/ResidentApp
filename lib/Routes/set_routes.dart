@@ -10,17 +10,19 @@ const String reporttoadmin = '/ReportToAdmin';
 const String adminreports = '/AdminReports';
 
 const String addreporttogatekeeperscreen = '/AddReportToGateKeeperScreen';
-const String reportshistoryscreen= '/ReportsHistoryScreen';
-const String guestshistoryscreen= '/GuestsHistoryScreen';
+const String reportshistoryscreen = '/ReportsHistoryScreen';
+const String guestshistoryscreen = '/GuestsHistoryScreen';
 
-const String hireserviceproviderscreen= '/HireServiceProviderScreen';
+const String hireserviceproviderscreen = '/HireServiceProviderScreen';
 
-const String hireserviceproviderviewprofilescreen= '/HireServiceProviderViewProfileScreen';
-const String serviceprovidersattendancescreen= '/ServiceProvidersAttendanceScreen';
+const String hireserviceproviderviewprofilescreen =
+    '/HireServiceProviderViewProfileScreen';
+const String serviceprovidersattendancescreen =
+    '/ServiceProvidersAttendanceScreen';
 
-const String viewattendancedetailscreen= '/ViewAttendanceDetailScreen';
+const String viewattendancedetailscreen = '/ViewAttendanceDetailScreen';
 
-const String panicmodescreen= '/PanicModeScreen';
+const String panicmodescreen = '/PanicModeScreen';
 
 const String notificationsscreen = '/NotificationsScreen';
 
@@ -32,13 +34,3 @@ const String noticeboardscreen = '/NoticeBoardScreen';
 const String gatekeeperreports = '/GatekeeperReports';
 const String residentpersonaldetail = '/ResidentPersonalDetail';
 const String residentaddressdetail = '/ResidentaddressDetail';
-
-
-
-
-
-
-
-
-
-

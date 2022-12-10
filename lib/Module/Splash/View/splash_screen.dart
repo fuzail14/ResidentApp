@@ -26,8 +26,13 @@ class _SplashScreenState extends State<SplashScreen> {
   void getUserSharedPreferencesData() async {
     User user = await MySharedPreferences.getUserData();
     print(user.bearerToken);
+    print(user.address);
+    
     if (user.bearerToken == "") {
       Timer(Duration(seconds: 3), () => Get.offAndToNamed(loginscreen));
+    } else if (user.address == 'NA') {
+      Timer(
+          Duration(seconds: 3), () => Get.offAndToNamed(residentaddressdetail));
     } else {
       Timer(Duration(seconds: 3),
           () => Get.offAndToNamed(homescreen, arguments: user));

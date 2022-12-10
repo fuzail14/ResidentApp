@@ -256,44 +256,6 @@ class _ResidentPersonalDetailState extends State<ResidentPersonalDetail> {
                       onFocusedBorderColor: primaryColor,
                       onEnabledBorderColor: primaryColor,
                     ),
-                    // controller.rentalorownerval == 'Rental'
-                    //     ? Column(
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           Padding(
-                    //             padding: const EdgeInsets.all(18.0),
-                    //             child: Text(
-                    //               'Enter Owner Details',
-                    //               style: TextStyle(
-                    //                   fontSize: 16,
-                    //                   fontWeight: FontWeight.bold),
-                    //             ),
-                    //           ),
-                    //           MyTextFormField(
-                    //               controller: controller.ownernameController,
-                    //               validator: emptyStringValidator,
-                    //               hintText: 'Owner Name',
-                    //               labelText: 'Enter Owner Name',
-                    //               onFocusedBorderColor: primaryColor,
-                    //               onEnabledBorderColor: primaryColor),
-                    //           MyTextFormField(
-                    //               controller: controller.owneraddressController,
-                    //               validator: emptyStringValidator,
-                    //               hintText: ' Owner Address',
-                    //               labelText: 'Enter Owner Address',
-                    //               onFocusedBorderColor: primaryColor,
-                    //               onEnabledBorderColor: primaryColor),
-                    //           MyTextFormField(
-                    //               controller:
-                    //                   controller.ownerphonenumController,
-                    //               validator: emptyStringValidator,
-                    //               hintText: 'Owner Phone No',
-                    //               labelText: 'Enter Phone No',
-                    //               onFocusedBorderColor: primaryColor,
-                    //               onEnabledBorderColor: primaryColor),
-                    //         ],
-                    //       )
-                    //     : Container(),
 
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.05,
@@ -302,40 +264,51 @@ class _ResidentPersonalDetailState extends State<ResidentPersonalDetail> {
                       onPressed: controller.isLoading
                           ? null
                           : () {
-                              // if (controller.formKey.currentState!.validate()) {
-                              //   if (controller.imageFile?.path == null) {
-                              //     Get.snackbar('Warning', 'Select an image !');
-                              //   } else {
-                              //     //User user = controller.user;
-                              //     Get.toNamed(residentaddressdetail);
+                              if (controller.formKey.currentState!.validate()) {
+                                if (controller.imageFile?.path == null) {
+                                  Get.snackbar('Warning', 'Select an image !');
+                                } else {
+                                  //User user = controller.user;
 
-                              //     // controller.addResidentApi(
-                              //     //     ownerName:
-                              //     //     controller.ownernameController.text,
-                              //     //     ownerAddress:
-                              //     //     controller.owneraddressController.text,
-                              //     //     ownerPhoneNo:
-                              //     //     controller.ownerphonenumController.text,
-                              //     //     file: controller.imageFile,
-                              //     //     residentalType: controller.rentalorownerval,
-                              //     //     propertyType: controller.houseorapartment,
-                              //     //     firstName:
-                              //     //     controller.firstnameController.text,
-                              //     //     lastName: controller.lastnameController.text,
-                              //     //     cnic: controller.cnicController.text,
-                              //     //     vechileno:
-                              //     //     controller.vehiclenoController.text,
-                              //     //     address: controller.addressController.text,
-                              //     //     mobileno: controller.mobileNoController.text,
-                              //     //     password: controller.passwordController.text,
-                              //     //     bearerToken: user.bearerToken!,
-                              //     //     subadminid: user.userid!);
+                                  controller.signUpApi(
+                                      firstName:
+                                          controller.firstnameController.text,
+                                      lastName:
+                                          controller.lastnameController.text,
+                                      cnic: controller.cnicController.text,
+                                      address:
+                                          controller.addressController.text,
+                                      mobileno:
+                                          controller.mobileNoController.text,
+                                      password:
+                                          controller.passwordController.text,
+                                      file: controller.imageFile);
 
-                              //   }
-                              // Get.offAndToNamed(viewuser);
+                                  // controller.addResidentApi(
+                                  //     ownerName:
+                                  //     controller.ownernameController.text,
+                                  //     ownerAddress:
+                                  //     controller.owneraddressController.text,
+                                  //     ownerPhoneNo:
+                                  //     controller.ownerphonenumController.text,
+                                  //     file: controller.imageFile,
+                                  //     residentalType: controller.rentalorownerval,
+                                  //     propertyType: controller.houseorapartment,
+                                  //     firstName:
+                                  //     controller.firstnameController.text,
+                                  //     lastName: controller.lastnameController.text,
+                                  //     cnic: controller.cnicController.text,
+                                  //     vechileno:
+                                  //     controller.vehiclenoController.text,
+                                  //     address: controller.addressController.text,
+                                  //     mobileno: controller.mobileNoController.text,
+                                  //     password: controller.passwordController.text,
+                                  //     bearerToken: user.bearerToken!,
+                                  //     subadminid: user.userid!);
 
-                              //}
-                              Get.toNamed(residentaddressdetail);
+                                }
+                              }
+                              //Get.toNamed(residentaddressdetail);
                             },
                       textColor: Colors.white,
                       color: primaryColor,

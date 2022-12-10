@@ -21,7 +21,4 @@ class NoticeBoardModel {
       this.endtime,
       this.status,
       this.subadminid});
-
-
-      
 }

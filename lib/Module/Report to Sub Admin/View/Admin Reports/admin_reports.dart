@@ -8,9 +8,10 @@ import 'package:userapp/Routes/set_routes.dart';
 import 'package:userapp/Widgets/My%20Back%20Button/my_back_button.dart';
 import '../../../../Constants/constants.dart';
 import '../../../../Widgets/My Button/my_button.dart';
+
 class AdminReports extends GetView {
   final AdminReportsController _adminReportsController =
-  Get.put(AdminReportsController());
+      Get.put(AdminReportsController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,9 @@ class AdminReports extends GetView {
                     if (snapshot.hasData) {
                       return Column(
                         children: [
-                          MyBackButton(text: 'Complaint',),
+                          MyBackButton(
+                            text: 'Complaint',
+                          ),
                           Expanded(
                             child: ListView.builder(
                                 itemBuilder: (context, index) {
@@ -40,30 +43,30 @@ class AdminReports extends GetView {
                                               AlertDialog(
                                                 title: Column(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Center(
                                                         child: Text(
-                                                          'Complaint',
-                                                          style: GoogleFonts.ubuntu(
-                                                              color:
-                                                              HexColor('#4D4D4D'),
-                                                              fontSize: 18,
-                                                              fontWeight:
+                                                      'Complaint',
+                                                      style: GoogleFonts.ubuntu(
+                                                          color: HexColor(
+                                                              '#4D4D4D'),
+                                                          fontSize: 18,
+                                                          fontWeight:
                                                               FontWeight.w700),
-                                                        )),
+                                                    )),
                                                     SizedBox(
                                                       height: 10,
                                                     ),
                                                     Text(
-                                                      snapshot
-                                                          .data.data[index].title,
+                                                      snapshot.data.data[index]
+                                                          .title,
                                                       style: GoogleFonts.ubuntu(
-                                                          color:
-                                                          HexColor('#4D4D4D'),
+                                                          color: HexColor(
+                                                              '#4D4D4D'),
                                                           fontSize: 14,
                                                           fontWeight:
-                                                          FontWeight.w500),
+                                                              FontWeight.w500),
                                                     ),
                                                     SizedBox(
                                                       height: 8,
@@ -72,11 +75,11 @@ class AdminReports extends GetView {
                                                       snapshot.data.data[index]
                                                           .description,
                                                       style: GoogleFonts.ubuntu(
-                                                          color:
-                                                          HexColor('#4D4D4D'),
+                                                          color: HexColor(
+                                                              '#4D4D4D'),
                                                           fontSize: 12,
                                                           fontWeight:
-                                                          FontWeight.w400),
+                                                              FontWeight.w400),
                                                     ),
                                                     SizedBox(
                                                       height: 17,
@@ -85,8 +88,8 @@ class AdminReports extends GetView {
                                                       children: [
                                                         Icon(
                                                           Icons.calendar_month,
-                                                          color:
-                                                          HexColor('#A7A7A7'),
+                                                          color: HexColor(
+                                                              '#A7A7A7'),
                                                           size: 20,
                                                         ),
                                                         SizedBox(
@@ -95,14 +98,13 @@ class AdminReports extends GetView {
                                                         Text(
                                                           snapshot.data
                                                               .data[index].date,
-                                                          style:
-                                                          GoogleFonts.ubuntu(
+                                                          style: GoogleFonts.ubuntu(
                                                               color: HexColor(
                                                                   '#4D4D4D'),
                                                               fontSize: 10,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .w300),
+                                                                  FontWeight
+                                                                      .w300),
                                                         ),
                                                       ],
                                                     ),
@@ -110,45 +112,56 @@ class AdminReports extends GetView {
                                                       height: 45,
                                                     ),
                                                     GestureDetector(
-                                                      onTap: (){
-
+                                                      onTap: () {
                                                         Get.back();
                                                       },
                                                       child: Center(
                                                         child: Container(
                                                           height: 31,
                                                           width: 96,
-                                                          decoration: BoxDecoration(
-                                                              color: primaryColor,
-                                                              borderRadius:
-                                                              const BorderRadius
-                                                                  .all(
-                                                                Radius.circular(7.0),
-                                                              ),
-                                                              boxShadow: [
+                                                          decoration:
+                                                              BoxDecoration(
+                                                                  color:
+                                                                      primaryColor,
+                                                                  borderRadius:
+                                                                      const BorderRadius
+                                                                          .all(
+                                                                    Radius
+                                                                        .circular(
+                                                                            7.0),
+                                                                  ),
+                                                                  boxShadow: [
                                                                 BoxShadow(
-                                                                  color: Colors.grey
+                                                                  color: Colors
+                                                                      .grey
                                                                       .withOpacity(
-                                                                      0.8),
-                                                                  spreadRadius: 4,
-                                                                  blurRadius: 10,
+                                                                          0.8),
+                                                                  spreadRadius:
+                                                                      4,
+                                                                  blurRadius:
+                                                                      10,
                                                                   offset:
-                                                                  Offset(0, 3),
+                                                                      Offset(
+                                                                          0, 3),
                                                                 )
                                                               ]),
                                                           child: Center(
                                                             child: Text(
                                                               'OK',
                                                               textAlign:
-                                                              TextAlign.left,
+                                                                  TextAlign
+                                                                      .left,
                                                               style: TextStyle(
                                                                 fontFamily:
-                                                                "Netflix",
+                                                                    "Netflix",
                                                                 fontWeight:
-                                                                FontWeight.w600,
+                                                                    FontWeight
+                                                                        .w600,
                                                                 fontSize: 18,
-                                                                letterSpacing: 0.0,
-                                                                color: Colors.white,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                color: Colors
+                                                                    .white,
                                                               ),
                                                             ),
                                                           ),
@@ -158,103 +171,120 @@ class AdminReports extends GetView {
                                                   ],
                                                 ),
                                               ));
-
-
                                     },
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 13),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16, vertical: 13),
                                       child: SizedBox(
                                         width: 343,
                                         height: 112,
                                         child: Card(
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(18.0),
+                                            borderRadius:
+                                                BorderRadius.circular(18.0),
                                           ),
                                           child: Stack(
-
                                             children: [
                                               Align(
-                                                alignment:Alignment.topRight,
+                                                alignment: Alignment.topRight,
                                                 child: SvgPicture.asset(
                                                     'assets/cardbg.svg',
                                                     fit: BoxFit.fill),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.fromLTRB(12, 15, 0, 0),
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        12, 15, 0, 0),
                                                 child: Text(
                                                   'Water Problem',
                                                   style: GoogleFonts.montserrat(
-                                                      color: HexColor('#4D4D4D'),
+                                                      color:
+                                                          HexColor('#4D4D4D'),
                                                       fontSize: 16,
-                                                      fontWeight: FontWeight.w700),
+                                                      fontWeight:
+                                                          FontWeight.w700),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.fromLTRB(12, 35, 75, 0),
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        12, 35, 75, 0),
                                                 child: Text(
-                                                  overflow: TextOverflow.ellipsis,
-                                                  maxLines:3,
-
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 3,
                                                   'No Water Since 20202',
                                                   style: GoogleFonts.ubuntu(
-
-                                                      color: HexColor(
-                                                          '#757575'),
+                                                      color:
+                                                          HexColor('#757575'),
                                                       fontSize: 12,
                                                       fontWeight:
-                                                      FontWeight
-                                                          .w400),
-
+                                                          FontWeight.w400),
                                                 ),
                                               ),
 
                                               Padding(
-                                                padding: const EdgeInsets.fromLTRB(12, 76, 75, 0),
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        12, 76, 75, 0),
                                                 child: Row(
                                                   children: [
-                                                    SvgPicture.asset('assets/complain_history_date_icon1.svg'),
-                                                    SizedBox(width: 11.2,),
-                                                    Text('03 April 2022',style: GoogleFonts.ubuntu(
-                                                        color: HexColor('#A5AAB7'),
-                                                        fontSize: 10,
-                                                        fontWeight: FontWeight.w300),),
-
-
-                                                  ],),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.fromLTRB(0, 37, 22, 0),
-                                                child: Align(
-                                                    alignment: Alignment.topRight,
-                                                    child: MyStatusWidget(status: 'InProgress', color: HexColor('#4EC018'))),
-                                              ),
-                                              GestureDetector(
-                                                onTap: (){
-                                                   showProblemDialog(
-                                                                context,
-                                                                snapshot
-                                                                    .data
-                                                                    .data[index]
-                                                                    .id,
-                                                                snapshot
-                                                                    .data
-                                                                    .data[index]
-                                                                    .userid,
-                                                                controller
-                                                                    .userdata
-                                                                    .bearerToken!);
-                                                                    
-                                                },
-                                                child: Padding(
-                                                  padding: const EdgeInsets.fromLTRB(0, 70, 22, 0),
-                                                  child: Align(
-                                                      alignment: Alignment.topRight,
-                                                      child: MyStatusWidget(width: 87,height: 22,
-                                                          status: 'Problem Solved', color: HexColor('#1E2772'))),
+                                                    SvgPicture.asset(
+                                                        'assets/complain_history_date_icon1.svg'),
+                                                    SizedBox(
+                                                      width: 11.2,
+                                                    ),
+                                                    Text(
+                                                      '03 April 2022',
+                                                      style: GoogleFonts.ubuntu(
+                                                          color: HexColor(
+                                                              '#A5AAB7'),
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.w300),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-
-
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        0, 37, 22, 0),
+                                                child: Align(
+                                                    alignment:
+                                                        Alignment.topRight,
+                                                    child: MyStatusWidget(
+                                                        status: 'InProgress',
+                                                        color: HexColor(
+                                                            '#4EC018'))),
+                                              ),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  showProblemDialog(
+                                                      context,
+                                                      snapshot
+                                                          .data.data[index].id,
+                                                      snapshot.data.data[index]
+                                                          .userid,
+                                                      controller.userdata
+                                                          .bearerToken!);
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 70, 22, 0),
+                                                  child: Align(
+                                                      alignment:
+                                                          Alignment.topRight,
+                                                      child: MyStatusWidget(
+                                                          width: 87,
+                                                          height: 22,
+                                                          status:
+                                                              'Problem Solved',
+                                                          color: HexColor(
+                                                              '#1E2772'))),
+                                                ),
+                                              ),
 
                                               // Padding(
                                               //   padding: EdgeInsets.only(
@@ -505,12 +535,8 @@ class AdminReports extends GetView {
                       return CircularProgressIndicator();
                     }
                   }),
-
-
             ],
           ),
-
-
           floatingActionButton: IconButton(
               padding: EdgeInsets.only(top: 85),
               iconSize: MediaQuery.of(context).size.height * 0.065,
@@ -529,98 +555,93 @@ class AdminReports extends GetView {
     return showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          title: Center(
-            child: Column(
-              children: [
-                SvgPicture.asset('assets/dialogicon.svg'),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('Complaint'),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Your Problem has been solved?',
-                  style: GoogleFonts.ubuntu(
-                      color: HexColor('#4D4D4D'),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400),
-                ),
-                SizedBox(
-                  height: 26,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              title: Center(
+                child: Column(
                   children: [
-                    MyButton(
-                      onPressed: () {
-                        _adminReportsController.ProblemSolvedButtonApi(
-                            reportid, userid, token);
-
-                        Get.back();
-                      },
-                
-                      name: 'Yes',
-                      color: HexColor('#5AE244'),
+                    SvgPicture.asset('assets/dialogicon.svg'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text('Complaint'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Your Problem has been solved?',
+                      style: GoogleFonts.ubuntu(
+                          color: HexColor('#4D4D4D'),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 26,
                     ),
-                    MyButton(
-                      onPressed: () {
-                        Get.back();
-                      },
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        MyButton(
+                          onPressed: () {
+                            _adminReportsController.ProblemSolvedButtonApi(
+                                reportid, userid, token);
 
-
-                      name: 'No',
-                      color: HexColor('#FF3232'),
-                    ),
+                            Get.back();
+                          },
+                          name: 'Yes',
+                          color: HexColor('#5AE244'),
+                        ),
+                        SizedBox(
+                          height: 18,
+                        ),
+                        MyButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          name: 'No',
+                          color: HexColor('#FF3232'),
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
-            ),
-          ),
-        ));
+                ),
+              ),
+            ));
   }
 
   Future<void> showDeleteDialog(BuildContext context) async {
     return showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          title: const Text('Delete'),
-          content: const Text('Do you want to delete this Admin?'),
-          actions: <Widget>[
-            MyButton(
-              onPressed: () {
-
-              },
-
-              name: 'Delete'
-            ),
-            MyButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-
-              name: 'Cancel',
-            ),
-          ],
-        ));
+              title: const Text('Delete'),
+              content: const Text('Do you want to delete this Admin?'),
+              actions: <Widget>[
+                MyButton(onPressed: () {}, name: 'Delete'),
+                MyButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  name: 'Cancel',
+                ),
+              ],
+            ));
   }
 
-  Widget MyStatusWidget({required status, required color, Color? textcolor,double? width, double? height}) {
+  Widget MyStatusWidget(
+      {required status,
+      required color,
+      Color? textcolor,
+      double? width,
+      double? height}) {
     return Container(
-      width: width?? 64,
-      height: height??18,
-      decoration: BoxDecoration(
-          color: color, borderRadius: BorderRadius.circular(4)),
+      width: width ?? 64,
+      height: height ?? 18,
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(4)),
       child: Center(
         child: Text(
           status,
           style: TextStyle(
             fontSize: 10,
-            color:textcolor ??HexColor('#FFFFFF'),
+            color: textcolor ?? HexColor('#FFFFFF'),
             fontWeight: FontWeight.w400,
           ),
         ),

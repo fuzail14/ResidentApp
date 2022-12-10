@@ -2,24 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:userapp/Utils/constants.dart';
 
 class CustomContainer extends StatelessWidget {
-   CustomContainer({this.onTap, this.title,this.Icon});
-    
-    
+  CustomContainer({this.onTap, this.title, this.Icon});
 
   void Function()? onTap;
   String? title;
   dynamic Icon;
-    
 
-    
   @override
   Widget build(BuildContext context) {
-    return 
-      GestureDetector(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: MediaQuery.of(context).size.height*0.100,
-        width: MediaQuery.of(context).size.height*0.100,
+        height: MediaQuery.of(context).size.height * 0.100,
+        width: MediaQuery.of(context).size.height * 0.100,
         decoration: BoxDecoration(
 
             // color: primaryColor,
@@ -36,7 +31,7 @@ class CustomContainer extends StatelessWidget {
             //   color: overallcolor,
             // ),
             Icon,
-            
+
             Text(
               title!,
               style:
@@ -49,8 +44,5 @@ class CustomContainer extends StatelessWidget {
         ),
       ),
     );
-  
-  
-    
   }
 }

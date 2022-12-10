@@ -13,18 +13,20 @@ import 'dart:convert';
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
 String dataToJson(Data data) => json.encode(data.toJson());
+
 class Data {
   Data({
-      int? id, 
-      int? userid, 
-      int? subadminid, 
-      String? title, 
-      String? description, 
-      String? date, 
-      int? status, 
-      String? statusdescription, 
-      String? createdAt, 
-      String? updatedAt,}){
+    int? id,
+    int? userid,
+    int? subadminid,
+    String? title,
+    String? description,
+    String? date,
+    int? status,
+    String? statusdescription,
+    String? createdAt,
+    String? updatedAt,
+  }) {
     _id = id;
     _userid = userid;
     _subadminid = subadminid;
@@ -35,7 +37,7 @@ class Data {
     _statusdescription = statusdescription;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
-}
+  }
 
   Data.fromJson(dynamic json) {
     _id = json['id'];
@@ -59,27 +61,30 @@ class Data {
   String? _statusdescription;
   String? _createdAt;
   String? _updatedAt;
-Data copyWith({  int? id,
-  int? userid,
-  int? subadminid,
-  String? title,
-  String? description,
-  String? date,
-  int? status,
-  String? statusdescription,
-  String? createdAt,
-  String? updatedAt,
-}) => Data(  id: id ?? _id,
-  userid: userid ?? _userid,
-  subadminid: subadminid ?? _subadminid,
-  title: title ?? _title,
-  description: description ?? _description,
-  date: date ?? _date,
-  status: status ?? _status,
-  statusdescription: statusdescription ?? _statusdescription,
-  createdAt: createdAt ?? _createdAt,
-  updatedAt: updatedAt ?? _updatedAt,
-);
+  Data copyWith({
+    int? id,
+    int? userid,
+    int? subadminid,
+    String? title,
+    String? description,
+    String? date,
+    int? status,
+    String? statusdescription,
+    String? createdAt,
+    String? updatedAt,
+  }) =>
+      Data(
+        id: id ?? _id,
+        userid: userid ?? _userid,
+        subadminid: subadminid ?? _subadminid,
+        title: title ?? _title,
+        description: description ?? _description,
+        date: date ?? _date,
+        status: status ?? _status,
+        statusdescription: statusdescription ?? _statusdescription,
+        createdAt: createdAt ?? _createdAt,
+        updatedAt: updatedAt ?? _updatedAt,
+      );
   int? get id => _id;
   int? get userid => _userid;
   int? get subadminid => _subadminid;
@@ -105,5 +110,4 @@ Data copyWith({  int? id,
     map['updated_at'] = _updatedAt;
     return map;
   }
-
 }

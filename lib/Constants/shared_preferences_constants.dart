@@ -7,8 +7,5 @@ const String roleNameSPKey = 'rolename';
 const String roleIdSPKey = 'roleId';
 const String cnicSPKey = 'cnic';
 const String bearerTokenSPKey = 'bearerToken';
-
-
-
-
+const String addressSPKey = 'address';
 
