@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:userapp/Module/Signup/Resident%20Address%20Detail/Controller/resident_address_controller.dart';
+import 'package:userapp/Module/Signup/Resident%20Address%20Detail/Model/Phase.dart';
 
 import '../../../../Constants/constants.dart';
 import '../../../../Routes/set_routes.dart';
@@ -56,6 +57,7 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.85,
                         child: CSCPicker(
+                          
                           defaultCountry: DefaultCountry.Pakistan,
                           showStates: true,
                           showCities: true,
@@ -121,7 +123,7 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: DropdownButton(
+                            child: DropdownButtonFormField(
                               isExpanded: true,
                               style: GoogleFonts.ubuntu(
                                   fontStyle: FontStyle.normal,
@@ -133,6 +135,9 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                                 Icons.arrow_drop_down_sharp,
                                 color: primaryColor,
                               ),
+                              validator: (value) => value == null
+                                  ? 'Please Select Society'
+                                  : null,
                               items: controller.societyorbuildinglist
                                   .map((String items) {
                                 return DropdownMenuItem(
@@ -165,7 +170,7 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: DropdownButton(
+                                      child: DropdownButtonFormField(
                                         isExpanded: true,
                                         style: GoogleFonts.ubuntu(
                                             fontStyle: FontStyle.normal,
@@ -177,6 +182,9 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                                           Icons.arrow_drop_down_sharp,
                                           color: primaryColor,
                                         ),
+                                        validator: (value) => value == null
+                                            ? 'Please Select Society Name'
+                                            : null,
                                         items: controller.societieslist
                                             .map((items) {
                                           return DropdownMenuItem(
@@ -186,6 +194,9 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                                         }).toList(),
                                         onChanged: (newValue) {
                                           controller.SelectedSociety(newValue);
+
+                                          controller.phaseli.clear();
+                                          controller.phaseslist.clear();
                                         },
                                       ),
                                     ),
@@ -240,7 +251,7 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(18),
+                      padding:  EdgeInsets.all(18),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -258,7 +269,10 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: DropdownButton(
+                              child: DropdownButtonFormField(
+                                validator: (value) => value == null
+                                    ? 'Please Select Phase'
+                                    : null,
                                 isExpanded: true,
                                 style: GoogleFonts.ubuntu(
                                     fontStyle: FontStyle.normal,
@@ -276,6 +290,7 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                                     child: Text(items.name!),
                                   );
                                 }).toList(),
+                                onTap: () {},
                                 onChanged: (newValue) {
                                   controller.SelectedPhase(newValue);
                                 },
@@ -302,7 +317,10 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: DropdownButton(
+                              child: DropdownButtonFormField(
+                                validator: (value) => value == null
+                                    ? 'Please Select Block'
+                                    : null,
                                 isExpanded: true,
                                 style: GoogleFonts.ubuntu(
                                     fontStyle: FontStyle.normal,
@@ -346,7 +364,10 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: DropdownButton(
+                              child: DropdownButtonFormField(
+                                validator: (value) => value == null
+                                    ? 'Please Select Street'
+                                    : null,
                                 isExpanded: true,
                                 style: GoogleFonts.ubuntu(
                                     fontStyle: FontStyle.normal,
@@ -390,7 +411,10 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: DropdownButton(
+                              child: DropdownButtonFormField(
+                                validator: (value) => value == null
+                                    ? 'Please Select House'
+                                    : null,
                                 isExpanded: true,
                                 style: GoogleFonts.ubuntu(
                                     fontStyle: FontStyle.normal,
@@ -513,39 +537,17 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                           ? null
                           : () {
                               if (controller.formKey.currentState!.validate()) {
-                                //User user = controller.user;
-
-                                print(
-                                    'controller.getsubadminid ${controller.getsubadminid}');
-                                print(
-                                    'controller.residentid ${controller.user!.userid}');
-                                print(
-                                    'controller.country ${controller.country}');
-                                print('controller.state ${controller.state}');
-                                print(
-                                    'controller.societyid ${controller.getsocietyid}');
-                                print(
-                                    'controller.selectedphaseid ${controller.getPhaseid}');
-                                print(
-                                    'controller.selectedblockid ${controller.getBlockid}');
-                                print(
-                                    'controller.selectedstreetid ${controller.getStreetid}');
-                                print(
-                                    'controller.selectedhouseid ${controller.getHouseid}');
-                                print(
-                                    'controller.houseadddress ${controller.houseaddressdetailController.text}');
-
-                                print(
-                                    'controller.rentalorowner ${controller.rentalorowner}');
-
-                                print(
-                                    'controller.owner name ${controller.ownernameController.text}');
-
-                                print(
-                                    'controller.owner phone ${controller.ownerphonenumController.text}');
-
-                                print(
-                                    'controller.vehicle no ${controller.vehiclenoController.text}');
+                                if (controller.state == null ||
+                                    controller.city == null ||
+                                    controller.getsocietyid == null ||
+                                    controller.getPhaseid == null ||
+                                    controller.getBlockid == null ||
+                                    controller.getStreetid == null ||
+                                    controller.getHouseid == null ||
+                                    controller.rentalorowner == null) {
+                                  Get.snackbar('Information Missing',
+                                      'Please Provide All iNformation');
+                                }
 
                                 controller.addResidentApi(
                                     subadminid: controller.getsubadminid,

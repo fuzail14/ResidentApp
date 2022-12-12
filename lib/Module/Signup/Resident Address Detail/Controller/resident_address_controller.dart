@@ -167,6 +167,17 @@ class ResidentAddressDetailController extends GetxController {
     phaseli.clear();
     phaseslist.clear();
 
+    phasesval = null;
+    blockli.clear();
+    blocklist.clear();
+    blockval = null;
+    streetli.clear();
+    streetlist.clear();
+    streetval = null;
+    houseli.clear();
+    houselist.clear();
+    houseval = null;
+
     selectedsocietyid = val;
     getsocietyid = selectedsocietyid.id;
 
@@ -193,6 +204,15 @@ class ResidentAddressDetailController extends GetxController {
 
   SelectedPhase(val) async {
     print('dropdown val $val');
+    blockli.clear();
+    blocklist.clear();
+    blockval = null;
+    streetli.clear();
+    streetlist.clear();
+    streetval = null;
+    houseli.clear();
+    houselist.clear();
+    houseval = null;
 
     selectedphaseid = val;
     getsubadminid = selectedphaseid.subadminid;
@@ -221,6 +241,13 @@ class ResidentAddressDetailController extends GetxController {
   SelectedBlock(val) async {
     print('dropdown val $val');
 
+    streetli.clear();
+    streetlist.clear();
+    streetval = null;
+    houseli.clear();
+    houselist.clear();
+    houseval = null;
+
     selectedblockid = val;
     getBlockid = selectedblockid.id;
 
@@ -243,9 +270,12 @@ class ResidentAddressDetailController extends GetxController {
 
   SelectedStreet(val) async {
     print('dropdown val $val');
+    houseli.clear();
+    houselist.clear();
+    houseval = null;
 
     selectedstreetid = val;
-   getStreetid =  selectedstreetid.id;
+    getStreetid = selectedstreetid.id;
 
     print(selectedstreetid.id);
     streetval = val;
@@ -266,8 +296,7 @@ class ResidentAddressDetailController extends GetxController {
   SelectedHouse(val) {
     houseval = val;
     selectedhouseid = val;
-    getHouseid =  selectedhouseid.id;
-
+    getHouseid = selectedhouseid.id;
 
     print(selectedhouseid.id);
 
@@ -298,14 +327,11 @@ class ResidentAddressDetailController extends GetxController {
       required int streetid,
       required int houseid,
       required String houseaddress,
-      
       required String residentalType,
-
       required String propertyType,
       required String vechileno,
       required String bearerToken,
       required String ownerName,
-      
       required String ownerPhoneNo}) async {
     print('Add Resident Api  Function Call');
     print("----Data----");
@@ -320,7 +346,7 @@ class ResidentAddressDetailController extends GetxController {
     print(phaseid);
     print(blockid);
     print(ownerName);
-    
+
     print(ownerPhoneNo);
     print(bearerToken);
     print(subadminid);
@@ -343,6 +369,7 @@ class ResidentAddressDetailController extends GetxController {
       request.fields['blockid'] = blockid.toString();
       request.fields['streetid'] = streetid.toString();
       request.fields['houseid'] = houseid.toString();
+      request.fields['houseaddress'] = houseaddress;
 
       request.fields['country'] = country;
       request.fields['roleid'] = 3.toString();
@@ -353,9 +380,11 @@ class ResidentAddressDetailController extends GetxController {
       request.fields['propertytype'] = propertyType;
       request.fields['residenttype'] = residentalType;
       request.fields['committeemember'] = "0";
+      request.fields['status'] = "0";
+      
 
       request.fields['ownername'] = ownerName;
-      
+
       request.fields['ownermobileno'] = ownerPhoneNo;
       var responsed = await request.send();
       var response = await Http.Response.fromStream(responsed);
@@ -391,7 +420,7 @@ class ResidentAddressDetailController extends GetxController {
 
       request.fields['country'] = country;
       request.fields['houseaddress'] = houseaddress;
-      
+
       request.fields['roleid'] = 3.toString();
       request.fields['rolename'] = 'resident';
 
@@ -400,6 +429,8 @@ class ResidentAddressDetailController extends GetxController {
       request.fields['propertytype'] = propertyType;
       request.fields['residenttype'] = residentalType;
       request.fields['committeemember'] = "0";
+      request.fields['status'] = "0";
+      
 
       var responsed = await request.send();
       var response = await Http.Response.fromStream(responsed);
