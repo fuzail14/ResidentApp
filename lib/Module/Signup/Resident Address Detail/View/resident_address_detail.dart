@@ -50,6 +50,7 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                     //     Get.offAllNamed(loginscreen);
                     //   },
                     // ),
+                    
 
                     Padding(
                       padding: EdgeInsets.only(
@@ -57,7 +58,6 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.85,
                         child: CSCPicker(
-                          
                           defaultCountry: DefaultCountry.Pakistan,
                           showStates: true,
                           showCities: true,
@@ -146,11 +146,11 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                                 );
                               }).toList(),
                               onChanged: (String? newValue) {
-                                controller.RentalOrOwner(newValue);
+                                controller.SocietyOrBuilding(newValue);
                               },
                             ),
                           ),
-                          (controller.societyorbuildingval == 'Society')
+                          (controller.societyorbuildingval == 'society')
                               ? Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -194,11 +194,225 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                                         }).toList(),
                                         onChanged: (newValue) {
                                           controller.SelectedSociety(newValue);
-
-                                          controller.phaseli.clear();
-                                          controller.phaseslist.clear();
                                         },
                                       ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(18),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 0, 0, 0),
+                                              child: Text(
+                                                "Select Phase",
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    // color: secondaryColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: DropdownButtonFormField(
+                                                validator: (value) =>
+                                                    value == null
+                                                        ? 'Please Select Phase'
+                                                        : null,
+                                                isExpanded: true,
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                                value: controller.phasesval,
+                                                icon: Icon(
+                                                  Icons.arrow_drop_down_sharp,
+                                                  color: primaryColor,
+                                                ),
+                                                items: controller.phaseslist
+                                                    .map((items) {
+                                                  return DropdownMenuItem(
+                                                    value: items,
+                                                    child: Text(items.name!),
+                                                  );
+                                                }).toList(),
+                                                onTap: () {},
+                                                onChanged: (newValue) {
+                                                  controller.SelectedPhase(
+                                                      newValue);
+                                                },
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(18),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 0, 0, 0),
+                                              child: Text(
+                                                "Select Block",
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    // color: secondaryColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: DropdownButtonFormField(
+                                                validator: (value) =>
+                                                    value == null
+                                                        ? 'Please Select Block'
+                                                        : null,
+                                                isExpanded: true,
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                                value: controller.blockval,
+                                                icon: Icon(
+                                                  Icons.arrow_drop_down_sharp,
+                                                  color: primaryColor,
+                                                ),
+                                                items: controller.blocklist
+                                                    .map((items) {
+                                                  return DropdownMenuItem(
+                                                    value: items,
+                                                    child: Text(items.name!),
+                                                  );
+                                                }).toList(),
+                                                onChanged: (newValue) {
+                                                  controller.SelectedBlock(
+                                                      newValue);
+                                                },
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(18),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 0, 0, 0),
+                                              child: Text(
+                                                "Select Street",
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    // color: secondaryColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: DropdownButtonFormField(
+                                                validator: (value) =>
+                                                    value == null
+                                                        ? 'Please Select Street'
+                                                        : null,
+                                                isExpanded: true,
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                                value: controller.streetval,
+                                                icon: Icon(
+                                                  Icons.arrow_drop_down_sharp,
+                                                  color: primaryColor,
+                                                ),
+                                                items: controller.streetlist
+                                                    .map((items) {
+                                                  return DropdownMenuItem(
+                                                    value: items,
+                                                    child: Text(items.name!),
+                                                  );
+                                                }).toList(),
+                                                onChanged: (newValue) {
+                                                  controller.SelectedStreet(
+                                                      newValue);
+                                                },
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(18),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 0, 0, 0),
+                                              child: Text(
+                                                "Select House",
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    // color: secondaryColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: DropdownButtonFormField(
+                                                validator: (value) =>
+                                                    value == null
+                                                        ? 'Please Select House'
+                                                        : null,
+                                                isExpanded: true,
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                                value: controller.houseval,
+                                                icon: Icon(
+                                                  Icons.arrow_drop_down_sharp,
+                                                  color: primaryColor,
+                                                ),
+                                                items: controller.houselist
+                                                    .map((items) {
+                                                  return DropdownMenuItem(
+                                                    value: items,
+                                                    child: Text(items.address!),
+                                                  );
+                                                }).toList(),
+                                                onChanged: (newValue) {
+                                                  controller.SelectedHouse(
+                                                      newValue);
+                                                },
+                                              ),
+                                            ),
+                                          ]),
                                     ),
                                   ],
                                 )
@@ -234,211 +448,132 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                                           color: primaryColor,
                                         ),
                                         items: controller.buildingslist
-                                            .map((String items) {
+                                            .map((items) {
                                           return DropdownMenuItem(
                                             value: items,
-                                            child: Text(items),
+                                            child: Text(items.name!),
                                           );
                                         }).toList(),
-                                        onChanged: (String? newValue) {
+                                        onChanged: (newValue) {
                                           controller.SelectedBuilding(newValue);
                                         },
                                       ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(18),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 0, 0, 0),
+                                              child: Text(
+                                                "Select Floor",
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    // color: secondaryColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: DropdownButtonFormField(
+                                                validator: (value) =>
+                                                    value == null
+                                                        ? 'Please Select Floor'
+                                                        : null,
+                                                isExpanded: true,
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                                value: controller.floorsval,
+                                                icon: Icon(
+                                                  Icons.arrow_drop_down_sharp,
+                                                  color: primaryColor,
+                                                ),
+                                                items: controller.floorslist
+                                                    .map((items) {
+                                                  return DropdownMenuItem(
+                                                    value: items,
+                                                    child: Text(items.name!),
+                                                  );
+                                                }).toList(),
+                                                onTap: () {},
+                                                onChanged: (newValue) {
+                                                  controller.SelectedFloor(
+                                                      newValue);
+                                                },
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(18),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 0, 0, 0),
+                                              child: Text(
+                                                "Select Apartment",
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    // color: secondaryColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: DropdownButtonFormField(
+                                                validator: (value) => value ==
+                                                        null
+                                                    ? 'Please Select Apartment'
+                                                    : null,
+                                                isExpanded: true,
+                                                style: GoogleFonts.ubuntu(
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 14,
+                                                    color: HexColor('#4D4D4D')),
+                                                value: controller.apartmentsval,
+                                                icon: Icon(
+                                                  Icons.arrow_drop_down_sharp,
+                                                  color: primaryColor,
+                                                ),
+                                                items: controller.apartmentslist
+                                                    .map((items) {
+                                                  return DropdownMenuItem(
+                                                    value: items,
+                                                    child: Text(items.name!),
+                                                  );
+                                                }).toList(),
+                                                onChanged: (newValue) {
+                                                  controller.SelectedApartment(
+                                                      newValue);
+                                                },
+                                              ),
+                                            ),
+                                          ]),
                                     ),
                                   ],
                                 ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding:  EdgeInsets.all(18),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                              child: Text(
-                                "Select Phase",
-                                style: GoogleFonts.ubuntu(
-                                    fontStyle: FontStyle.normal,
-                                    // color: secondaryColor,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: HexColor('#4D4D4D')),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: DropdownButtonFormField(
-                                validator: (value) => value == null
-                                    ? 'Please Select Phase'
-                                    : null,
-                                isExpanded: true,
-                                style: GoogleFonts.ubuntu(
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 14,
-                                    color: HexColor('#4D4D4D')),
-                                value: controller.phasesval,
-                                icon: Icon(
-                                  Icons.arrow_drop_down_sharp,
-                                  color: primaryColor,
-                                ),
-                                items: controller.phaseslist.map((items) {
-                                  return DropdownMenuItem(
-                                    value: items,
-                                    child: Text(items.name!),
-                                  );
-                                }).toList(),
-                                onTap: () {},
-                                onChanged: (newValue) {
-                                  controller.SelectedPhase(newValue);
-                                },
-                              ),
-                            ),
-                          ]),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                              child: Text(
-                                "Select Block",
-                                style: GoogleFonts.ubuntu(
-                                    fontStyle: FontStyle.normal,
-                                    // color: secondaryColor,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: HexColor('#4D4D4D')),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: DropdownButtonFormField(
-                                validator: (value) => value == null
-                                    ? 'Please Select Block'
-                                    : null,
-                                isExpanded: true,
-                                style: GoogleFonts.ubuntu(
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 14,
-                                    color: HexColor('#4D4D4D')),
-                                value: controller.blockval,
-                                icon: Icon(
-                                  Icons.arrow_drop_down_sharp,
-                                  color: primaryColor,
-                                ),
-                                items: controller.blocklist.map((items) {
-                                  return DropdownMenuItem(
-                                    value: items,
-                                    child: Text(items.name!),
-                                  );
-                                }).toList(),
-                                onChanged: (newValue) {
-                                  controller.SelectedBlock(newValue);
-                                },
-                              ),
-                            ),
-                          ]),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                              child: Text(
-                                "Select Street",
-                                style: GoogleFonts.ubuntu(
-                                    fontStyle: FontStyle.normal,
-                                    // color: secondaryColor,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: HexColor('#4D4D4D')),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: DropdownButtonFormField(
-                                validator: (value) => value == null
-                                    ? 'Please Select Street'
-                                    : null,
-                                isExpanded: true,
-                                style: GoogleFonts.ubuntu(
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 14,
-                                    color: HexColor('#4D4D4D')),
-                                value: controller.streetval,
-                                icon: Icon(
-                                  Icons.arrow_drop_down_sharp,
-                                  color: primaryColor,
-                                ),
-                                items: controller.streetlist.map((items) {
-                                  return DropdownMenuItem(
-                                    value: items,
-                                    child: Text(items.name!),
-                                  );
-                                }).toList(),
-                                onChanged: (newValue) {
-                                  controller.SelectedStreet(newValue);
-                                },
-                              ),
-                            ),
-                          ]),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                              child: Text(
-                                "Select House",
-                                style: GoogleFonts.ubuntu(
-                                    fontStyle: FontStyle.normal,
-                                    // color: secondaryColor,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: HexColor('#4D4D4D')),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: DropdownButtonFormField(
-                                validator: (value) => value == null
-                                    ? 'Please Select House'
-                                    : null,
-                                isExpanded: true,
-                                style: GoogleFonts.ubuntu(
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 14,
-                                    color: HexColor('#4D4D4D')),
-                                value: controller.houseval,
-                                icon: Icon(
-                                  Icons.arrow_drop_down_sharp,
-                                  color: primaryColor,
-                                ),
-                                items: controller.houselist.map((items) {
-                                  return DropdownMenuItem(
-                                    value: items,
-                                    child: Text(items.address!),
-                                  );
-                                }).toList(),
-                                onChanged: (newValue) {
-                                  controller.SelectedHouse(newValue);
-                                },
-                              ),
-                            ),
-                          ]),
-                    ),
+
                     MyTextFormField(
                         controller: controller.houseaddressdetailController,
                         hintText: 'House Address',
@@ -537,42 +672,54 @@ class _ResidentAddressDetailState extends State<ResidentAddressDetail> {
                           ? null
                           : () {
                               if (controller.formKey.currentState!.validate()) {
-                                if (controller.state == null ||
-                                    controller.city == null ||
-                                    controller.getsocietyid == null ||
-                                    controller.getPhaseid == null ||
-                                    controller.getBlockid == null ||
-                                    controller.getStreetid == null ||
-                                    controller.getHouseid == null ||
-                                    controller.rentalorowner == null) {
-                                  Get.snackbar('Information Missing',
-                                      'Please Provide All iNformation');
+                                if (controller.societyorbuildingval ==
+                                    'society') {
+                                  controller.addResidentApi(
+                                      subadminid: controller.getsubadminid,
+                                      residentid: controller.user!.userid!,
+                                      country: controller.country,
+                                      state: controller.state,
+                                      city: controller.city,
+                                      societyname: controller.getsocietyname,
+                                      phasename: controller.getPhasename,
+                                      blockname: controller.getBlockname,
+                                      streetname: controller.getStreetname,
+                                      houseid: controller.getHouseid,
+                                      houseaddress: controller
+                                          .houseaddressdetailController.text,
+                                      residentalType: controller.rentalorowner,
+                                      propertyType: controller.propertytype,
+                                      vechileno:
+                                          controller.vehiclenoController.text,
+                                      bearerToken:
+                                          controller.user!.bearerToken!,
+                                      ownerName:
+                                          controller.ownernameController.text,
+                                      ownerPhoneNo: controller
+                                          .ownerphonenumController.text);
+                                } else {
+                                  controller.addBuildingResidentApi(
+                                      subadminid: controller.getsubadminid,
+                                      residentid: controller.user!.userid!,
+                                      country: controller.country,
+                                      state: controller.state,
+                                      city: controller.city,
+                                      buildingname: controller.getbuildingname,
+                                      floorname: controller.getfloorname,
+                                      apartmentid: controller.getapartmentid,
+                                      houseaddress: controller
+                                          .houseaddressdetailController.text,
+                                      residentalType: controller.rentalorowner,
+                                      propertyType: controller.propertytype,
+                                      vechileno:
+                                          controller.vehiclenoController.text,
+                                      bearerToken:
+                                          controller.user!.bearerToken!,
+                                      ownerName:
+                                          controller.ownernameController.text,
+                                      ownerPhoneNo: controller
+                                          .ownerphonenumController.text);
                                 }
-
-                                controller.addResidentApi(
-                                    subadminid: controller.getsubadminid,
-                                    residentid: controller.user!.userid!,
-                                    country: controller.country,
-                                    state: controller.state,
-                                    city: controller.city,
-                                    societyid: controller.getsocietyid,
-                                    phaseid: controller.getPhaseid,
-                                    blockid: controller.getBlockid,
-                                    streetid: controller.getStreetid,
-                                    houseid: controller.getHouseid,
-                                    houseaddress: controller
-                                        .houseaddressdetailController.text,
-                                    residentalType: controller.rentalorowner,
-                                    propertyType: controller.propertytype,
-                                    vechileno:
-                                        controller.vehiclenoController.text,
-                                    bearerToken: controller.user!.bearerToken!,
-                                    ownerName:
-                                        controller.ownernameController.text,
-                                    ownerPhoneNo: controller
-                                        .ownerphonenumController.text);
-
-                                // Get.offAndToNamed(viewuser);
                               }
                             },
                       textColor: Colors.white,

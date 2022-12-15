@@ -4,12 +4,14 @@ import 'package:http/http.dart' as Http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:userapp/Module/Signup/Resident%20Address%20Detail/Model/Apartment.dart';
 import 'package:userapp/Module/Signup/Resident%20Address%20Detail/Model/Phase.dart';
 import 'package:userapp/Module/Signup/Resident%20Personal%20Detail/Model/Resident.dart';
 import 'package:userapp/Services/Shared%20Preferences/MySharedPreferences.dart';
 
 import '../../../../Constants/api_routes.dart';
 import '../../../Login/Model/User.dart';
+import '../Model/Floor.dart';
 import '../Model/Society.dart';
 import '../Model/Street.dart';
 import '../Model/block.dart';
@@ -32,34 +34,45 @@ class ResidentAddressDetailController extends GetxController {
   TextEditingController ownerphonenumController = TextEditingController();
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   var imageFile;
-  String societyorbuildingval = 'Society';
+  String societyorbuildingval = 'society';
   Phase? phasesval;
+  Floor? floorsval;
+  Apartment? apartmentsval;
+
   Block? blockval;
 
   Street? streetval;
   House? houseval;
 
   Society? societiesname;
-  String buildingsname = 'Al-Buraq';
+  Society? buildingsname;
 
   String houseorapartment = 'House';
   String rentalorowner = 'Rental';
   var societyli = <Society>[].obs;
   var phaseli = <Phase>[].obs;
+  var floorli = <Floor>[].obs;
+  var apartmentli = <Apartment>[].obs;
+
   var blockli = <Block>[].obs;
   var streetli = <Street>[].obs;
   var houseli = <House>[].obs;
 
   Society? society;
   Phase? phase;
+  Floor? floor;
+  Apartment? apartment;
+
   Block? block;
   Street? street;
   House? house;
 
-  var societyorbuildinglist = ['Society', 'Building'];
+  var societyorbuildinglist = ['society', 'building'];
   List<Society> societieslist = [];
-  var buildingslist = ['Al-Buraq', 'Umair Plaza', 'Some Other Building'];
+  List<Society> buildingslist = [];
   List<Phase> phaseslist = [];
+  List<Floor> floorslist = [];
+  List<Apartment> apartmentslist = [];
 
   List<Block> blocklist = [];
   List<Street> streetlist = [];
@@ -74,18 +87,31 @@ class ResidentAddressDetailController extends GetxController {
   String state = '';
   String city = '';
   var societyresponsedata;
+  var buildingresponsedata;
+
   var phaseresponsedata;
+  var floorsresponsedata;
+  var apartmentsresponsedata;
+
   var blocksresponsedata;
   var streetsresponsedata;
   var housesresponsedata;
 
   var selectedsocietyid;
+  var selectedbuildingid;
+  var selectedfloorid;
+  var selectedapartmentid;
+
   var selectedphaseid;
   var getsubadminid;
-  var getsocietyid;
-  var getPhaseid;
-  var getBlockid;
-  var getStreetid;
+  var getsocietyname;
+  var getbuildingname;
+  var getfloorname;
+  var getapartmentid;
+
+  var getPhasename;
+  var getBlockname;
+  var getStreetname;
   var getHouseid;
 
   var selectedblockid;
@@ -107,7 +133,7 @@ class ResidentAddressDetailController extends GetxController {
     user = await MySharedPreferences.getUserData();
     token = user!.bearerToken;
 
-    await viewAllSocietiesApi(token);
+    await viewAllSocietiesApi(societyorbuildingval, token);
 
     for (var e in societyli) {
       societieslist.add(e);
@@ -151,8 +177,37 @@ class ResidentAddressDetailController extends GetxController {
     } else {}
   }
 
-  RentalOrOwner(val) {
+  SocietyOrBuilding(val) async {
+    societyli.clear();
+    buildingslist.clear();
+    societiesname = null;
+
+    buildingsname = null;
+    floorli.clear();
+    floorslist.clear();
+    floorsval = null;
+    apartmentli.clear();
+    apartmentslist.clear();
+    apartmentsval = null;
+
     societyorbuildingval = val;
+
+    if (societyorbuildingval == 'building') {
+      await viewAllBuildingsApi(societyorbuildingval, token);
+      for (var e in societyli) {
+        buildingslist.add(e);
+      }
+    } else {
+      societiesname = null;
+
+      societieslist.clear();
+
+      await viewAllSocietiesApi(societyorbuildingval, token);
+
+      for (var e in societyli) {
+        societieslist.add(e);
+      }
+    }
     update();
   }
 
@@ -168,6 +223,7 @@ class ResidentAddressDetailController extends GetxController {
     phaseslist.clear();
 
     phasesval = null;
+
     blockli.clear();
     blocklist.clear();
     blockval = null;
@@ -179,8 +235,9 @@ class ResidentAddressDetailController extends GetxController {
     houseval = null;
 
     selectedsocietyid = val;
-    getsocietyid = selectedsocietyid.id;
+    getsocietyname = selectedsocietyid.name;
 
+    
     print(selectedsocietyid.id);
 
     societiesname = val;
@@ -197,8 +254,34 @@ class ResidentAddressDetailController extends GetxController {
     update();
   }
 
-  SelectedBuilding(val) {
+  SelectedBuilding(val) async {
+    floorli.clear();
+    floorslist.clear();
+    floorsval = null;
+    apartmentli.clear();
+    apartmentslist.clear();
+    apartmentsval = null;
+
     buildingsname = val;
+
+    selectedbuildingid = val;
+
+    getbuildingname = selectedbuildingid.name;
+
+    print(selectedbuildingid.id);
+
+    buildingsname = val;
+
+    await viewAllFloorsApi(selectedbuildingid.id, token);
+
+    for (var e in floorli) {
+      floorslist.add(e);
+    }
+
+    //societiesname = societieslist[0];
+
+    print(floorslist);
+
     update();
   }
 
@@ -216,7 +299,7 @@ class ResidentAddressDetailController extends GetxController {
 
     selectedphaseid = val;
     getsubadminid = selectedphaseid.subadminid;
-    getPhaseid = selectedphaseid.id;
+    getPhasename = selectedphaseid.name;
 
     print(selectedphaseid.id);
     print('get subadmin id ${selectedphaseid.subadminid}');
@@ -238,6 +321,42 @@ class ResidentAddressDetailController extends GetxController {
     update();
   }
 
+  SelectedFloor(val) async {
+    print('dropdown val $val');
+    apartmentli.clear();
+    apartmentslist.clear();
+    apartmentsval = null;
+
+    selectedfloorid = val;
+    getfloorname = selectedfloorid.name;
+    getsubadminid = val.subadminid;
+
+    print(selectedfloorid.id);
+
+    floorsval = val;
+
+    await viewAllApartmentssApi(selectedfloorid.id, token);
+
+    for (var e in apartmentli) {
+      apartmentslist.add(e);
+    }
+
+    //societiesname = societieslist[0];
+
+    print(floorslist);
+
+    update();
+  }
+
+  SelectedApartment(val) {
+    getapartmentid = val.id;
+
+    print(getapartmentid);
+
+    apartmentsval = val;
+    update();
+  }
+
   SelectedBlock(val) async {
     print('dropdown val $val');
 
@@ -249,7 +368,7 @@ class ResidentAddressDetailController extends GetxController {
     houseval = null;
 
     selectedblockid = val;
-    getBlockid = selectedblockid.id;
+    getBlockname = selectedblockid.name;
 
     print(selectedblockid.id);
 
@@ -275,7 +394,7 @@ class ResidentAddressDetailController extends GetxController {
     houseval = null;
 
     selectedstreetid = val;
-    getStreetid = selectedstreetid.id;
+    getStreetname = selectedstreetid.name;
 
     print(selectedstreetid.id);
     streetval = val;
@@ -321,10 +440,10 @@ class ResidentAddressDetailController extends GetxController {
       required String country,
       required String state,
       required String city,
-      required int societyid,
-      required int phaseid,
-      required int blockid,
-      required int streetid,
+      required String societyname,
+      required String phasename,
+      required String blockname,
+      required String streetname,
       required int houseid,
       required String houseaddress,
       required String residentalType,
@@ -334,24 +453,7 @@ class ResidentAddressDetailController extends GetxController {
       required String ownerName,
       required String ownerPhoneNo}) async {
     print('Add Resident Api  Function Call');
-    print("----Data----");
 
-    print(residentalType);
-    print(propertyType);
-    print(country);
-    print(state);
-    print(city);
-    print(vechileno);
-    print(societyid);
-    print(phaseid);
-    print(blockid);
-    print(ownerName);
-
-    print(ownerPhoneNo);
-    print(bearerToken);
-    print(subadminid);
-
-    print("---------------------------");
     Map<String, String> headers = {"Authorization": "Bearer $bearerToken"};
     var request =
         Http.MultipartRequest('POST', Uri.parse(Api.registerresident));
@@ -364,10 +466,10 @@ class ResidentAddressDetailController extends GetxController {
       request.fields['residentid'] = residentid.toString();
       request.fields['state'] = state;
       request.fields['city'] = city;
-      request.fields['societyid'] = societyid.toString();
-      request.fields['phaseid'] = phaseid.toString();
-      request.fields['blockid'] = blockid.toString();
-      request.fields['streetid'] = streetid.toString();
+      request.fields['societyname'] = societyname;
+      request.fields['phasename'] = phasename;
+      request.fields['blockname'] = blockname;
+      request.fields['streetname'] = streetname;
       request.fields['houseid'] = houseid.toString();
       request.fields['houseaddress'] = houseaddress;
 
@@ -381,7 +483,6 @@ class ResidentAddressDetailController extends GetxController {
       request.fields['residenttype'] = residentalType;
       request.fields['committeemember'] = "0";
       request.fields['status'] = "0";
-      
 
       request.fields['ownername'] = ownerName;
 
@@ -412,10 +513,10 @@ class ResidentAddressDetailController extends GetxController {
       request.fields['residentid'] = residentid.toString();
       request.fields['state'] = state;
       request.fields['city'] = city;
-      request.fields['societyid'] = societyid.toString();
-      request.fields['phaseid'] = phaseid.toString();
-      request.fields['blockid'] = blockid.toString();
-      request.fields['streetid'] = streetid.toString();
+      request.fields['societyname'] = societyname;
+      request.fields['phasename'] = phasename;
+      request.fields['blockname'] = blockname;
+      request.fields['streetname'] = streetname;
       request.fields['houseid'] = houseid.toString();
 
       request.fields['country'] = country;
@@ -430,7 +531,6 @@ class ResidentAddressDetailController extends GetxController {
       request.fields['residenttype'] = residentalType;
       request.fields['committeemember'] = "0";
       request.fields['status'] = "0";
-      
 
       var responsed = await request.send();
       var response = await Http.Response.fromStream(responsed);
@@ -456,17 +556,139 @@ class ResidentAddressDetailController extends GetxController {
     }
   }
 
-  Future viewAllSocietiesApi(String token) async {
+  Future addBuildingResidentApi(
+      {
+      //required File file,
+      required int subadminid,
+      required int residentid,
+      required String country,
+      required String state,
+      required String city,
+      required String buildingname,
+      required String floorname,
+      required int apartmentid,
+      required String houseaddress,
+      required String residentalType,
+      required String propertyType,
+      required String vechileno,
+      required String bearerToken,
+      required String ownerName,
+      required String ownerPhoneNo}) async {
+    print('Add Resident Api  Function Call');
+
+    Map<String, String> headers = {"Authorization": "Bearer $bearerToken"};
+    var request =
+        Http.MultipartRequest('POST', Uri.parse(Api.registerbuildingresident));
+    request.headers.addAll(headers);
+
+    //request.files.add(await Http.MultipartFile.fromPath('image', file.path));
+
+    if (residentalType.contains('Rental')) {
+      print('iam inside rental');
+      request.fields['residentid'] = residentid.toString();
+      request.fields['state'] = state;
+      request.fields['city'] = city;
+      request.fields['buildingname'] = buildingname;
+      request.fields['floorname'] = floorname;
+      request.fields['apartmentid'] = apartmentid.toString();
+
+      request.fields['houseaddress'] = houseaddress;
+
+      request.fields['country'] = country;
+      request.fields['roleid'] = 3.toString();
+      request.fields['rolename'] = 'resident';
+
+      request.fields['vechileno'] = vechileno;
+      request.fields['subadminid'] = subadminid.toString();
+      request.fields['propertytype'] = propertyType;
+      request.fields['residenttype'] = residentalType;
+      request.fields['committeemember'] = "0";
+      request.fields['status'] = "0";
+
+      request.fields['ownername'] = ownerName;
+
+      request.fields['ownermobileno'] = ownerPhoneNo;
+      var responsed = await request.send();
+      var response = await Http.Response.fromStream(responsed);
+
+      print(response.statusCode);
+      print(response.body);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print(data);
+        print(response.body);
+        Get.snackbar("Resident Register Successfully", "");
+        //Get.offAndToNamed(viewuser, arguments: user);
+      } else if (response.statusCode == 403) {
+        var data = jsonDecode(response.body.toString());
+
+        Get.snackbar(
+          "Error",
+          data.toString(),
+        );
+      } else {
+        Get.snackbar("Failed to Register", "");
+      }
+    } else {
+      print("ima in else");
+      request.fields['residentid'] = residentid.toString();
+      request.fields['state'] = state;
+      request.fields['city'] = city;
+      request.fields['buildingname'] = buildingname;
+      request.fields['floorname'] = floorname;
+      request.fields['apartmentid'] = apartmentid.toString();
+
+      request.fields['country'] = country;
+      request.fields['houseaddress'] = houseaddress;
+
+      request.fields['roleid'] = 3.toString();
+      request.fields['rolename'] = 'resident';
+
+      request.fields['vechileno'] = vechileno;
+      request.fields['subadminid'] = subadminid.toString();
+      request.fields['propertytype'] = propertyType;
+      request.fields['residenttype'] = residentalType;
+      request.fields['committeemember'] = "0";
+      request.fields['status'] = "0";
+
+      var responsed = await request.send();
+      var response = await Http.Response.fromStream(responsed);
+      print(response.statusCode);
+      print(response.body);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print(data);
+        print(response.body);
+        Get.snackbar("Resident Register Successfully", "");
+        // Get.toNamed(homescreen, arguments: user);
+        //Get.offAndToNamed(viewuser, arguments: user);
+      } else if (response.statusCode == 403) {
+        var data = jsonDecode(response.body.toString());
+
+        Get.snackbar(
+          "Error",
+          data.toString(),
+        );
+      } else {
+        Get.snackbar("Failed to Register", "");
+      }
+    }
+  }
+
+  Future viewAllSocietiesApi(String type, String token) async {
     print('idhr aya');
     print(token);
+    print(type);
+    societyli.clear();
 
     final response = await Http.get(
-      Uri.parse(Api.view_all_societies),
+      Uri.parse(Api.view_all_societies + '/' + type.toString()),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': "Bearer $token"
       },
     );
+    print(response.statusCode);
 
     var data = jsonDecode(response.body.toString());
     societyresponsedata = data['data'];
@@ -485,6 +707,53 @@ class ResidentAddressDetailController extends GetxController {
 
         societyli.add(society!);
       }
+      print('society societyli $societyli');
+      print('society societyli ${societyli.length}');
+
+      update();
+
+      return societyli;
+// societyli.add(society);
+
+    } else {
+// return societyli;
+    }
+  }
+
+  Future viewAllBuildingsApi(String type, String token) async {
+    print('idhr aya');
+    print(token);
+    print(type);
+    societyli.clear();
+
+    final response = await Http.get(
+      Uri.parse(Api.view_all_societies + '/' + type.toString()),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': "Bearer $token"
+      },
+    );
+    print(response.statusCode);
+
+    var data = jsonDecode(response.body.toString());
+    buildingresponsedata = data['data'];
+
+    if (response.statusCode == 200) {
+      for (var e in buildingresponsedata) {
+        society = Society(
+          id: e['id'],
+          name: e['name'],
+          address: e['address'],
+          country: e['country'],
+          state: e['state'],
+          city: e['city'],
+          type: e['type'],
+        );
+
+        societyli.add(society!);
+      }
+      print('societyli $societyli');
+      print('societyli ${societyli.length}');
 
       update();
 
@@ -529,6 +798,46 @@ class ResidentAddressDetailController extends GetxController {
       update();
 
       return phaseli;
+// societyli.add(society);
+
+    } else {
+// return societyli;
+    }
+  }
+
+  Future viewAllFloorsApi(buildingid, String token) async {
+    print('phase aya');
+    print(token);
+    print(buildingid);
+
+    final response = await Http.get(
+      Uri.parse(Api.view_all_floors + '/' + buildingid.toString()),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': "Bearer $token"
+      },
+    );
+
+    var data = jsonDecode(response.body.toString());
+    floorsresponsedata = data['data'];
+    print(response.body);
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      for (var e in floorsresponsedata) {
+        floor = Floor(
+          id: e['id'],
+          name: e['name'],
+          subadminid: e['subadminid'],
+          buildingid: e['buildingid'],
+        );
+
+        floorli.add(floor!);
+      }
+
+      update();
+
+      return floorli;
 // societyli.add(society);
 
     } else {
@@ -646,6 +955,45 @@ class ResidentAddressDetailController extends GetxController {
       update();
 
       return houseli;
+// societyli.add(society);
+
+    } else {
+// return societyli;
+    }
+  }
+
+  Future viewAllApartmentssApi(floorid, String token) async {
+    print('Apartment aya');
+    print(token);
+    print(floorid);
+
+    final response = await Http.get(
+      Uri.parse(Api.view_all_apartments + '/' + floorid.toString()),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': "Bearer $token"
+      },
+    );
+
+    var data = jsonDecode(response.body.toString());
+    apartmentsresponsedata = data['data'];
+    print(response.body);
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      for (var e in apartmentsresponsedata) {
+        apartment = Apartment(
+          id: e['id'],
+          name: e['name'],
+          fid: e['fid'],
+        );
+
+        apartmentli.add(apartment!);
+      }
+
+      update();
+
+      return apartmentli;
 // societyli.add(society);
 
     } else {
